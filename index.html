@@ -1,0 +1,1783 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Wisdom from Madhyasth Darshan</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .text-shadow {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
+        }
+        /* Styles for the flipping animation */
+        #quote-card-content {
+            transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
+        }
+        #quote-card-content.flipping {
+            opacity: 0;
+            transform: scale(0.95);
+        }
+    </style>
+</head>
+<body>
+    <div id="main-container" class="flex flex-col items-center justify-center min-h-screen p-4 transition-all duration-1000">
+        <div class="w-full max-w-2xl mx-auto">
+            <header class="text-center mb-8">
+                <h1 class="text-3xl md:text-4xl font-bold text-white text-shadow">Wisdom from Madhyasth Darshan</h1>
+                <p class="text-gray-200 mt-2 text-shadow">Insights on Coexistence and Human Consciousness</p>
+            </header>
+            
+            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-xl shadow-lg p-6 md:p-8 flex flex-col">
+                <main class="flex-grow min-h-[360px] md:min-h-[340px] flex items-center justify-center">
+                    <div id="quote-card-content">
+                        <div class="flex flex-col h-full">
+                            <blockquote id="quote-hindi" class="text-xl md:text-2xl font-medium mb-4 border-l-4 border-indigo-500 pl-4 text-gray-900"></blockquote>
+                            <p id="quote-english" class="text-md text-gray-600 mb-6 pl-5 italic"></p>
+            
+                            <div class="mt-4 border-t border-gray-300 pt-4 flex-grow flex flex-col">
+                                <h2 class="text-lg font-semibold mb-2 text-gray-800">Interpretation</h2>
+                                <p id="quote-interpretation" class="text-gray-700 text-base leading-relaxed flex-grow"></p>
+                            </div>
+                            
+                            <div class="mt-6 text-right text-xs text-gray-500">
+                              <p>Reference: <i id="quote-reference"></i></p>
+                            </div>
+                        </div>
+                    </div>
+                </main>
+
+                <div class="mt-6 text-center">
+                    <button id="new-quote-btn" class="bg-indigo-600 hover:bg-indigo-700 text-white font-bold py-3 px-6 rounded-lg shadow-md transition-all duration-200 transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:ring-opacity-50 flex items-center justify-center mx-auto gap-2 disabled:bg-indigo-400 disabled:cursor-not-allowed">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 24 24" stroke-width="2" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+                            <path d="M18 4l3 3l-3 3"></path>
+                            <path d="M18 20l3 -3l-3 -3"></path>
+                            <path d="M3 7h3a5 5 0 0 1 5 5a5 5 0 0 0 5 5h5"></path>
+                            <path d="M3 17h3a5 5 0 0 0 5 -5a5 5 0 0 1 5 -5h5"></path>
+                        </svg>
+                        Generate New Quote
+                    </button>
+                </div>
+            </div>
+
+            <footer class="text-center mt-12">
+                <div class="text-sm text-gray-200 max-w-md mx-auto text-shadow">
+                    <p>Quotes from Books by Shri A. Nagraj,</p>
+                    <p class="italic mt-1">Translations and interpretations may not be completely accurate and are indicative of the actual meaning.</p>
+                </div>
+            </footer>
+        </div>
+    </div>
+
+<script>
+    const quotes = [
+        {
+            hindi: "जागृत मानव कर्म करते समय स्वतंत्र तथा फल भोगते समय भी स्वतंत्र है।",
+            english: "The awakened human is free while performing actions and also free while experiencing the results.",
+            interpretation: "This quote distinguishes between a state of living in delusion versus living with awareness. A person bound by illusion acts out of compulsion and feels trapped by the consequences. In contrast, an 'awakened' individual acts from a place of understanding and choice. They are not a victim of circumstance but a conscious creator of their reality, accepting outcomes without being psychologically bound by them. This is the essence of true freedom.",
+            reference: "Manav Vyavahar Darshan, Page 11"
+        },
+        {
+            hindi: "मानव सही में एक तथा गलती में अनेक है।",
+            english: "In correctness, humanity is one; in error, it is many.",
+            interpretation: "This profound statement suggests that truth and universal principles (correctness) unite humanity. When we operate from a place of universal values like justice, truth, and compassion, we find common ground. However, when we are driven by individual delusions, fears, and misunderstandings (errors), we create division, conflict, and fragmentation. The path to unity lies in aligning with universal truths.",
+            reference: "Manav Vyavahar Darshan, Page 47"
+        },
+        {
+            hindi: "जो कृतज्ञ नहीं है, वह मानव संस्कृति व सभ्यता का वाहक बनने का प्रमाण प्रस्तुत नहीं कर सकता।",
+            english: "One who is not grateful cannot present evidence of being a carrier of human culture and civilization.",
+            interpretation: "Gratitude is presented here not just as a polite emotion, but as a foundational pillar of civilization. It signifies the recognition of our interconnectedness and the contributions of others and nature to our existence. An ungrateful person is self-centered and cannot uphold the cooperative and respectful spirit that is essential for a thriving, humane culture.",
+            reference: "Manav Vyavahar Darshan, Page 20"
+        },
+        {
+            hindi: "न्याय, धर्म एवं सत्यपूर्ण व्यवहार ही एकसूत्रता का सूत्र है।",
+            english: "Behavior that is filled with justice, righteousness, and truth is the formula for unity.",
+            interpretation: "Unity is not achieved through force or superficial agreements, but through a shared commitment to fundamental principles. Justice (fairness in relationships), Dharma (righteous conduct aligned with natural laws), and Truth (alignment with reality) are the threads that weave society together. When these principles guide our actions, we create a harmonious and unified existence.",
+            reference: "Manav Vyavahar Darshan, Page 69"
+        },
+        {
+            hindi: "भ्रमित मानव ही कर्म करते समय स्वतन्त्र एवम्‌ फल भोगते समय परतन्त्र है।",
+            english: "The deluded human is independent while performing an action, but dependent when bearing its fruit.",
+            interpretation: "This highlights the paradox of acting without understanding. A person driven by ego or illusion feels free to do as they please. However, because their actions are not aligned with reality, they become entangled in the unexpected and often painful consequences. They become a slave to the results of their own 'free' actions. True freedom involves understanding the action and its potential outcome.",
+            reference: "Manav Vyavahar Darshan, Page 11"
+        },
+        {
+            hindi: "जिसके पास जो होगा, वह उसे बाँटेगा ही।",
+            english: "Whatever one has, one will inevitably distribute it.",
+            interpretation: "This simple sentence carries deep psychological weight. It means that our inner state—be it peace, anger, knowledge, or confusion—naturally radiates outwards and affects others. A person filled with turmoil will spread turmoil, while a person with inner peace will share that peace. It underscores the responsibility we have for cultivating our inner world, as it becomes our contribution to the outer world.",
+            reference: "Manav Abhyas Darshan, Page 89"
+        },
+        {
+            hindi: "समझ को प्रगट न करना या न कर सकना या समझ सम्पन्न नहीं हो पाना ही रहस्य है।",
+            english: "Not expressing understanding, being unable to express it, or not achieving it in the first place, is the only mystery.",
+            interpretation: "This demystifies the concept of 'mystery.' The text suggests that reality itself is not mysterious, but knowable. The only 'mystery' is our own lack of understanding or our inability to articulate what we know. The solution is not to worship the unknown, but to pursue clarity and the ability to express it, thereby eliminating the mystery.",
+            reference: "Manav Vyavahar Darshan, Page 29"
+        },
+        {
+            hindi: "अनुभव ही प्रमाण परम प्रमाण ही समझ ज्ञान समझ ही प्रत्यक्ष, प्रत्यक्ष ही समाधान।",
+            english: "Experience is the proof; the ultimate proof is understanding and knowledge; understanding is direct perception, and direct perception is the solution.",
+            interpretation: "This outlines the process of true knowing. It's not based on belief, but on a direct, experiential path. True 'Experience' leads to deep 'Understanding' (knowledge). This understanding allows for 'Direct Perception' of reality as it is, without illusion. Seeing things clearly, as they are, is the ultimate 'Solution' to all problems, which are rooted in misunderstanding.",
+            reference: "Manav Vyavahar Darshan, Page 9"
+        },
+        {
+            hindi: "भूमि स्वर्ग हो, मानव देवता हो, धर्म सफल हो, नित्य शुभ हो।",
+            english: "May the Earth become heaven, may humans become divine, may righteousness be successful, may there be eternal auspiciousness.",
+            interpretation: "This is a benediction that outlines the ultimate potential of existence. It's not a prayer for an afterlife, but a vision for this life. Earth becomes 'heaven' through right action, humans become 'divine' by realizing their true nature, and 'righteousness' (Dharma) succeeding leads to a state of perpetual well-being.",
+            reference: "Manav Vyavahar Darshan, Page 7"
+        },
+        {
+            hindi: "व्यवस्था ही विकास एवं जागृति।",
+            english: "Order itself is evolution and awakening.",
+            interpretation: "This connects the cosmic and the personal. 'Order' (Vyavastha) refers to the inherent, self-organized system of existence. Aligning with this natural order is the very process of 'evolution' (vikas) and 'awakening' (jagruti). Chaos and suffering arise from moving against this inherent order.",
+            reference: "Manav Vyavahar Darshan, Page 10"
+        },
+        {
+            hindi: "नियम ही न्याय, न्याय ही धर्म, धर्म ही सत्य, सत्य ही ऐश्वर्य।",
+            english: "Law is justice, justice is righteousness, righteousness is truth, truth is abundance.",
+            interpretation: "This presents a causal chain of principles. Universal 'Laws' (Niyam) are the basis for 'Justice' (Nyay). Living justly is 'Righteousness' (Dharma). The nature of righteousness is 'Truth' (Satya). Living in truth leads to true 'Abundance' (Aishwarya), which is not just material wealth but a state of complete fulfillment in coexistence.",
+            reference: "Manav Vyavahar Darshan, Page 11"
+        },
+        {
+            hindi: "जागृति का प्रमाण अमानवीयता से मानवीयता।",
+            english: "The proof of awakening is the transformation from inhumanity to humanity.",
+            interpretation: "Awakening is not an abstract concept but a tangible shift in behavior. The primary evidence that one is 'awakening' is moving away from cruel, selfish, and divisive actions ('inhumanity') towards behavior characterized by compassion, justice, and understanding ('humanity').",
+            reference: "Manav Vyavahar Darshan, Page 12"
+        },
+        {
+            hindi: "मानव, मानव के साथ संघर्ष करने के लिये, प्रत्येक संगठित इकाई अपनी सभ्यता एवं संस्कृति को श्रेष्ठ मानने के आधार पर स्वत्व और सम्पत्तिकरण के विस्तारीकरण को न्याय-सम्मत स्वीकार लेता है।",
+            english: "To struggle with another human, every organized unit accepts the expansion of its ownership and property as just, based on believing its own civilization and culture to be superior.",
+            interpretation: "This is a sharp critique of the root cause of conflict. It argues that wars and struggles begin with the belief in one's own cultural or ideological superiority. This belief is then used to justify the 'just' expansion of power, wealth, and territory at the expense of others.",
+            reference: "Manav Vyavahar Darshan, Page 14"
+        },
+        {
+            hindi: "धर्म सामरस्यता ही मानव में अखंडता है।",
+            english: "Harmony in righteousness (Dharma) is the integrity within humanity.",
+            interpretation: "True unity ('integrity' or 'wholeness') among people doesn't come from shared race, language, or geography. It comes from 'Dharma Samrasyata' - a shared harmony and understanding of the universal principles of living. When people align with these fundamental truths of existence, they become united.",
+            reference: "Manav Vyavahar Darshan, Page 15"
+        },
+        {
+            hindi: "स्वयम्‌ का मूल्यांकन कर लो- गलती अपराध नहीं करोगे फलत: दुःखी, प्रताड़ित और दरिद्र नहीं होगे।",
+            english: "Evaluate yourself - you will not make mistakes or commit crimes, and consequently, you will not be sad, tormented, or impoverished.",
+            interpretation: "This places the responsibility for one's state of being firmly on self-reflection. Suffering ('sadness, torment, poverty') is not random but a direct result of 'mistakes and crimes' born from a lack of self-awareness. The path to a fulfilled life begins with honest self-evaluation.",
+            reference: "Manav Vyavahar Darshan, Page 16"
+        },
+        {
+            hindi: "मानव जाति एक, कर्म अनेक।",
+            english: "The human race is one, the actions are many.",
+            interpretation: "This statement emphasizes a fundamental unity while acknowledging diversity. At our core, we are all part of a single human family. The differences we see are in our 'actions' (karma), which are shaped by our varying levels of understanding and delusion. The goal is to align our diverse actions with the singular truth of our shared humanity.",
+            reference: "Manav Vyavahar Darshan, Page 9"
+        },
+        {
+            hindi: "मानव धर्म एक, समाधान अनेक।",
+            english: "The human purpose (Dharma) is one, the solutions are many.",
+            interpretation: "The fundamental purpose or nature (Dharma) of a human being—to live in a state of resolution and happiness—is universal. However, the specific paths and 'solutions' (samadhan) to achieve this state can be diverse, tailored to individual circumstances and levels of understanding.",
+            reference: "Manav Vyavahar Darshan, Page 9"
+        },
+        {
+            hindi: "जीवन नित्य, जन्म-मृत्यु एक घटना।",
+            english: "Life is eternal, birth and death are an event.",
+            interpretation: "This distinguishes the eternal consciousness ('Life' or 'Jeevan') from the temporary physical body. 'Life' itself does not begin or end. 'Birth and death' are merely events related to the physical form that consciousness inhabits. This perspective shifts focus from fearing death to understanding the nature of eternal consciousness.",
+            reference: "Manav Vyavahar Darshan, Page 9"
+        },
+        {
+            hindi: "जागृति पूर्वक अभिव्यक्तियाँ समझदार मानव परम्परा।",
+            english: "Expressions that come from a place of awakening create the tradition of a wise humanity.",
+            interpretation: "A truly wise and sustainable human tradition is not built on technology or power, but on the collective expressions of awakened individuals. When people act, speak, and create from a state of clear understanding, they contribute to a culture of wisdom that can be passed down through generations.",
+            reference: "Manav Vyavahar Darshan, Page 9"
+        },
+        {
+            hindi: "कृतज्ञता ही मूलतः संस्कृति व सभ्यता का आधारग्राही एवं संरक्षक मूल्य है।",
+            english: "Gratitude is fundamentally the value that grasps and protects the basis of culture and civilization.",
+            interpretation: "This elevates gratitude from a simple feeling to a cornerstone of society. It is the 'value' that allows us to recognize our debt to the past, to nature, and to each other. This recognition is what 'grasps' the essence of culture and motivates us to 'protect' and build upon it for the future.",
+            reference: "Manav Vyavahar Darshan, Page 20"
+        },
+        {
+            hindi: "जो जैसा है उसको वैसा जानना, मानना एवं पहचानना ही निर्भ्रान्त स्थिति की उपलब्धि है।",
+            english: "To know, accept, and recognize that which is, as it is, is the achievement of a delusion-free state.",
+            interpretation: "This is the definition of clarity. A state free from delusion ('nirbhrant') is not about having mystical visions, but about the simple, profound ability to see reality without the distortion of our own fears, desires, and prejudices. The goal is to align our perception with what is actually there.",
+            reference: "Manav Vyavahar Darshan, Page 66"
+        },
+        {
+            hindi: "सत्यता का अध्ययन पूर्ण हो जाना ही निर्भ्रमता है।",
+            english: "The completion of the study of reality is the state of being delusion-free.",
+            interpretation: "Being free from delusion is not a gift but the result of a process: the 'study of reality' (satyata ka adhyayan). This 'study' involves observing existence, understanding its laws, and seeing our place within it. When this understanding is complete, delusion naturally dissolves.",
+            reference: "Manav Karma Darshan, Page 17"
+        },
+        {
+            hindi: "अनुभव मात्र सत्य सहज ही है क्योंकि यह अपरिवर्तनीय है।",
+            english: "Experience is only of truth itself, because it is unchanging.",
+            interpretation: "This defines what constitutes true 'experience' (anubhav). It is not fleeting sensory pleasure or emotional highs and lows. True experience is the direct perception of 'truth' (satya), which is the unchanging, eternal aspect of reality. Anything that changes is a phenomenon, not the underlying truth.",
+            reference: "Manav Vyavahar Darshan, Page 67"
+        },
+        {
+            hindi: "नियम अपरिवर्तनीय है, इसलिये नियम सत्य एवं नित्य सिद्ध है।",
+            english: "The law is unchangeable, therefore the law is proven to be true and eternal.",
+            interpretation: "The underlying laws of existence (niyam) — physical, chemical, and conscious — are not human inventions and do not change. Because they are constant and universal, they are synonymous with 'truth' (satya) and 'eternity' (nitya). Understanding these laws is key to aligning with reality.",
+            reference: "Manav Vyavahar Darshan, Page 67"
+        },
+        {
+            hindi: "सत्यबोध के बिना सत्यानुभूति तथा सत्यानुभूति के बिना विश्राम नहीं है।",
+            english: "Without the knowledge of truth there is no experience of truth, and without the experience of truth there is no rest.",
+            interpretation: "This outlines the path to 'rest' (vishram), which means a state of complete resolution and peace. It begins with 'knowledge of truth' (Satyabodh), which is intellectual understanding. This must mature into a direct 'experience of truth' (Satyanubhuti). Only this direct experience can bring an end to the inner turmoil and seeking that defines the human condition.",
+            reference: "Manav Vyavahar Darshan, Page 68"
+        },
+        {
+            hindi: "सत्य, मात्र सत्ता में सम्पुक्त जड़ चैतन्य प्रकृति ही है।",
+            english: "Truth is nothing but the material and conscious nature saturated in the all-pervading existence.",
+            interpretation: "This is a core metaphysical statement. 'Truth' (Satya) is not an abstract concept. It is the totality of reality: the 'material' (jad) and 'conscious' (chaitanya) nature, which are inseparable from and 'saturated in' the ultimate, all-pervading reality (Satta). Coexistence is the fundamental truth.",
+            reference: "Manav Vyavahar Darshan, Page 8"
+        },
+        {
+            hindi: "अहंकार एवं भ्रम यह दोनों सत्यता के प्रति अनर्हता के द्योतक हैं।",
+            english: "Ego and delusion are both indicators of ineligibility for truth.",
+            interpretation: "The path to understanding truth has prerequisites. The presence of 'ego' (ahankar) — the false sense of a separate self — and 'delusion' (bhram) — a distorted view of reality — makes one 'ineligible' to perceive truth. One must first work on dissolving these obstacles.",
+            reference: "Manav Vyavahar Darshan, Page 68"
+        },
+        {
+            hindi: "सुख एक बौद्धिक स्थिति है।",
+            english: "Happiness is an intellectual state.",
+            interpretation: "This statement challenges the common notion that happiness comes from external objects or sensory pleasures. Instead, it posits that true, lasting happiness ('sukh') is a 'boudhik sthiti' - a state of the intellect, a state of understanding. It is the result of having resolved all questions and contradictions within oneself.",
+            reference: "Manav Karma Darshan, Page 17"
+        },
+        {
+            hindi: "शोषण तथा पोषण भेद से ही मानव गुरु-मूल्यन व लघु-मूल्यन प्रक्रिया को संपन्न करता है।",
+            english: "It is through the distinction between exploitation and nourishment that a human completes the process of assigning higher or lower value.",
+            interpretation: "This explains how we form our values. Our actions are either 'nourishing' (poshan) — contributing to order and mutual fulfillment — or 'exploitative' (shoshan) — causing disorder and harm. By observing the results of these two types of actions, we learn to assign 'higher value' (guru-mulyan) to what is nourishing and 'lower value' (laghu-mulyan) to what is exploitative.",
+            reference: "Manav Vyavahar Darshan, Page 113"
+        },
+        {
+            hindi: "विचार पक्ष का परिमार्जन मात्र चित के प्रत्यावर्तन से ही संभव है।",
+            english: "The purification of the faculty of thought is possible only through the returning of the faculty of contemplation (chitta).",
+            interpretation: "This describes a key process in consciousness. 'Purifying our thoughts' (vichar) isn't about suppressing them. It requires the 'returning' (pratyavartan) of our deeper faculty of 'contemplation/imagination' (chitta) from being focused on the external world of sensations to the internal world of understanding. When our contemplation is aligned with truth, our thoughts naturally become harmonious.",
+            reference: "Manav Anubhav Darshan, Page 23"
+        },
+        {
+            hindi: "जो जिसका मूल्यांकन नहीं करेगा वह उसका सदुपयोग नहीं करेगा या नहीं कर सकेगा।",
+            english: "One who does not evaluate something will not, or cannot, make good use of it.",
+            interpretation: "Proper use (sadupayog) stems from correct evaluation (mulyankan). Whether it's a relationship, a natural resource, or one's own talent, we cannot use it correctly until we understand its true nature, purpose, and value. Misuse and abuse stem from incorrect or non-existent evaluation.",
+            reference: "Manav Abhyas Darshan, Page 139"
+        },
+        {
+            hindi: "मानव के लिए सुख ही धर्म है।",
+            english: "For a human, happiness itself is their nature (Dharma).",
+            interpretation: "This is a radical redefinition of 'Dharma'. It is not a set of external rules, but the innate nature of a being. The intrinsic nature and purpose of a human being is to exist in a state of continuous happiness, which is achieved through resolution and understanding. To be unhappy is to be unnatural.",
+            reference: "Manav Vyavahar Darshan, Page 36"
+        },
+        {
+            hindi: "पुरुष का जीवन यतित्व से सफल है। स्त्रीका जीवन सतीत्व से सफल है।",
+            english: "A man's life is successful through self-control (yatitva). A woman's life is successful through devotion to truth (satitva).",
+            interpretation: "This defines success in terms of inner qualities, not external achievements. 'Yatitva' implies disciplined effort and self-mastery. 'Satitva' implies a steadfast devotion to 'Sat' or Truth. Both point to a life where success is measured by one's alignment with higher principles and self-realization, leading to a harmonious and purposeful existence for both men and women.",
+            reference: "Manav Karma Darshan, Page 151"
+        },
+        {
+            hindi: "मित्र का जीवन परस्पर दिखावा रहित उदारता पूर्ण, समृद्धि सहित सर्वतोमुखी समाधान को प्रमाणित करने से सफल है।",
+            english: "A friend's life is successful by demonstrating all-round resolution with prosperity, full of generosity and free from pretense.",
+            interpretation: "This sets a high bar for true friendship. A successful friendship is not just about enjoyment but about mutually 'demonstrating' a life of 'all-round resolution' (complete understanding). It is characterized by genuine 'generosity', a lack of 'pretense', and a state of shared 'prosperity' (which includes but is not limited to material well-being).",
+            reference: "Manav Karma Darshan, Page 151"
+        },
+        {
+            hindi: "समझदारी सहअस्तित्व रूपी अस्तित्व दर्शन ज्ञान, चैतन्य प्रकृति रूपी जीवन ज्ञान और मानवीयता रूपी आचरण ज्ञान ही संपूर्ण ज्ञान है।",
+            english: "Understanding comprising the knowledge of existence as coexistence, the knowledge of life as conscious nature, and the knowledge of conduct as humanity, is complete knowledge.",
+            interpretation: "This defines 'complete knowledge' as a three-part understanding. 1) Metaphysics: Seeing that all of existence is fundamentally coexistence. 2) Psychology: Understanding that life is the conscious principle. 3) Ethics: Knowing that humane conduct is the natural expression of this understanding. All three are required for a complete worldview.",
+            reference: "Manav Anubhav Darshan, Page 2"
+        },
+        {
+            hindi: "यदि समस्या है तो समाधान है ही।",
+            english: "If there is a problem, a solution also exists.",
+            interpretation: "This is a statement of profound optimism rooted in logic. It suggests that problems are not fundamental to existence; they are a lack of understanding. The existence of a problem itself implies the existence of a solution, because the 'problem' is simply the gap between our current state and the state of resolution. The work is to find the pre-existing solution.",
+            reference: "Manav Vyavahar Darshan, Page 30"
+        },
+        {
+            hindi: "प्रत्येक मानव जन्म से ही न्याय का याचक है।",
+            english: "Every human, from birth, is a seeker of justice.",
+            interpretation: "The desire for 'justice' (nyay) is not a learned concept but an innate human quality. From the very beginning of our lives, we have an intuitive sense of fairness and an expectation of being treated justly. This inherent 'seeking' is a fundamental aspect of our consciousness.",
+            reference: "Manav Vyavahar Darshan, Page 63"
+        },
+        {
+            hindi: "न्यायपूर्ण व्यवहार ही मानवीयतापूर्ण व्यवहार है।",
+            english: "Just behavior is humane behavior.",
+            interpretation: "This provides a clear and practical measure for what it means to be humane. The core of humane conduct is 'justice' (nyay) – ensuring fairness, recognizing the other's existence and needs, and fulfilling mutual responsibilities. Any behavior that deviates from justice is, by definition, less than fully humane.",
+            reference: "Manav Abhyas Darshan, Page 160"
+        },
+        {
+            hindi: "जो स्वयं क्लेशित रहेगा, वह दूसरों को क्लेश पहुँचायेगा ही।",
+            english: "One who is mentally suffering will necessarily cause mental suffering to others.",
+            interpretation: "This emphasizes that our unresolved inner state—our mental suffering (klesh)—is not a private matter. It inevitably spills out and affects those around us. Therefore, working on our own inner resolution is a fundamental social responsibility.",
+            reference: "Manav Karma Darshan, Page 111"
+        },
+        {
+            hindi: "जाने हुए को मान लो । माने हुए को जान लो ।",
+            english: "Accept what is known. Know what is accepted.",
+            interpretation: "This highlights the two-way process of knowledge. One path is to accept the truths that have been realized. The other is to investigate and realize the truth behind what has been merely accepted on belief. It emphasizes a journey from belief to understanding.",
+            reference: "Manav Vyavahar Darshan, Page 8"
+        },
+        {
+            hindi: "जागृति क्रम, जागृति ।",
+            english: "The process of awakening, awakening itself.",
+            interpretation: "The path and the destination are one. The very process of striving for awakening is a form of awakening. It implies that enlightenment is not a distant goal but a continuous unfolding in the present moment.",
+            reference: "Manav Vyavahar Darshan, Page 9"
+        },
+        {
+            hindi: "सुख, शान्ति, संतोष एवं आनन्द ।",
+            english: "Happiness, Peace, Contentment, and Bliss.",
+            interpretation: "These are the four progressive states of a resolved consciousness. It's not a random collection of feelings but a defined map of human potential, starting with the resolution of contradictions (Happiness) and culminating in the experiential state of oneness (Bliss).",
+            reference: "Manav Vyavahar Darshan, Page 12"
+        },
+        {
+            hindi: "सरलता :- अभिमान से रहित और यथार्थता को व्यक्त करने की विचार व व्यवहार पद्धति ही सरलता है।",
+            english: "Simplicity: The method of thought and behavior of expressing reality without arrogance is simplicity itself.",
+            interpretation: "Simplicity is not about having less, but about being free from the complexities of the ego. It is a state of being where our thoughts and actions are direct, clear, and unburdened by the need for self-aggrandizement, leading to a natural and harmonious way of living.",
+            reference: "Manav Vyavahar Darshan, Page 26"
+        },
+        {
+            hindi: "अन्याय का स्रोत अधूरा मूल्यांकन है।",
+            english: "The source of injustice is incomplete evaluation.",
+            interpretation: "Injustice does not arise from malice, but from a failure to correctly evaluate a situation, a person, or a relationship in its entirety. When we act on partial information or biased judgment, our behavior naturally becomes unjust. True justice requires a complete and holistic understanding, or 'mulyankan,' of all factors involved.",
+            reference: "Manav Vyavahar Darshan, Page 75"
+        },
+        {
+            hindi: "अस्तित्व सहज सह-अस्तित्व है।",
+            english: "Existence is, by its nature, co-existence.",
+            interpretation: "This is a foundational principle. Nothing exists in isolation. Everything, from the smallest atom to the largest galaxy, exists in relationship with everything else. To understand this interconnectedness is to understand the fundamental nature of reality itself.",
+            reference: "Manav Anubhav Darshan, Page 4"
+        },
+        {
+            hindi: "प्रत्येक इकाई अपनी व्यवस्था में है और समग्र व्यवस्था में भागीदार है।",
+            english: "Every unit is in its own order and participates in the overall order.",
+            interpretation: "This speaks to the harmonious, self-regulating nature of the cosmos. Each entity, whether a plant, animal, or human, has its own inherent nature and order. By being true to its nature, it automatically contributes to the harmony of the larger system. Problems arise when a unit, like a deluded human, acts against its own nature.",
+            reference: "Manav Abhyas Darshan, Page 45"
+        },
+        {
+            hindi: "मानवीयतापूर्ण आचरण ही अभयता का स्रोत है।",
+            english: "Humane conduct is the source of fearlessness.",
+            interpretation: "True fearlessness does not come from power or aggression. It arises from living a life of integrity, justice, and compassion. When our actions are aligned with our humane nature, we have nothing to hide and no reason to fear retaliation or inner guilt. This alignment brings a state of profound peace and fearlessness.",
+            reference: "Manav Karma Darshan, Page 98"
+        },
+        {
+            hindi: "ज्ञान का पर्यवसान अनुभव में है।",
+            english: "The culmination of knowledge is in experience.",
+            interpretation: "Theoretical knowledge or intellectual understanding is only a stepping stone. The ultimate purpose of knowledge is to lead to 'anubhav'—a direct, lived experience of the truth. Until knowledge becomes an inseparable part of one's being, it remains incomplete.",
+            reference: "Manav Anubhav Darshan, Page 17"
+        },
+        {
+            hindi: "परस्परता में विश्वास ही संबंध का आधार है।",
+            english: "Trust in mutuality is the basis of relationship.",
+            interpretation: "A relationship cannot be sustained by transactions or expectations alone. Its foundation is 'vishwas' or trust—not just in the other person, but in the principle of mutuality itself. It is the understanding that fulfillment for both parties is possible and intended.",
+            reference: "Manav Vyavahar Darshan, Page 52"
+        },
+        {
+            hindi: "श्रम का प्रयोजन समृद्धि है, शोषण नहीं।",
+            english: "The purpose of labor is prosperity, not exploitation.",
+            interpretation: "This provides an ethical framework for work. Labor is a creative and productive force intended to generate 'samriddhi'—well-being and prosperity for all. When labor is used as a means to exploit others or hoard resources, it deviates from its fundamental purpose and creates societal imbalance.",
+            reference: "Manav Karma Darshan, Page 71"
+        },
+        {
+            hindi: "समझदारी ही सार्वभौम व्यवस्था का आधार है।",
+            english: "Understanding is the basis of a universal order.",
+            interpretation: "A truly universal and harmonious human order cannot be established through laws, force, or ideology. It can only be built on the foundation of 'samajdari'—right understanding—within each individual. When a critical mass of humanity operates from a place of clarity, a just and orderly society naturally emerges.",
+            reference: "Manav Abhyas Darshan, Page 201"
+        },
+        {
+            hindi: "कल्पनाशीलता का नियोजन ही समाधान है।",
+            english: "The right placement of imagination is the solution.",
+            interpretation: "Human imagination ('kalpanashilta') is a powerful tool. When it is undisciplined and rooted in delusion, it creates endless desires, fears, and problems. The 'solution' is to channel this imagination towards understanding reality and envisioning harmonious solutions, rather than getting lost in fantasy.",
+            reference: "Manav Abhyas Darshan, Page 92"
+        },
+        {
+            hindi: "प्रकृति में कोई वस्तु व्यर्थ नहीं है।",
+            english: "In nature, no object is useless.",
+            interpretation: "Every element in the natural world has a purpose and a role to play within the larger ecosystem. This points to the inherent order and intelligence of existence. The concept of 'waste' or 'uselessness' is a human invention, born from a lack of understanding of the interconnectedness of things.",
+            reference: "Manav Karma Darshan, Page 34"
+        },
+        {
+            hindi: "उत्तरदायित्व का निर्वाह ही स्वतंत्रता है।",
+            english: "The fulfillment of responsibility is freedom.",
+            interpretation: "This challenges the conventional idea of freedom as 'doing whatever one wants.' True freedom ('swatantrata') is found in understanding and fulfilling one's responsibilities ('uttardayitva') within the larger order. Acting irresponsibly leads to entanglement and dependency, which is the opposite of freedom.",
+            reference: "Manav Vyavahar Darshan, Page 88"
+        },
+        {
+            hindi: "हर नर-नारी सम्मान के अधिकारी हैं।",
+            english: "Every man and woman is entitled to respect.",
+            interpretation: "Respect ('samman') is not something to be earned based on status, wealth, or achievement. It is a fundamental right of every human being, based on the intrinsic value of consciousness ('Jeevan'). To see this intrinsic value in every person is a hallmark of an awakened perspective.",
+            reference: "Manav Vyavahar Darshan, Page 49"
+        },
+        {
+            hindi: "मूल्य का स्रोत उपयोगिता एवं पूरकता है।",
+            english: "The source of value is utility and complementarity.",
+            interpretation: "Something has value ('mulya') based on two principles: its utility (how it can be used purposefully) and its complementarity (how it contributes to the harmony of a larger system). This applies to objects, relationships, and actions. Understanding this allows for correct evaluation and prevents waste.",
+            reference: "Manav Abhyas Darshan, Page 140"
+        },
+        {
+            hindi: "अस्तित्व में कोई विरोध नहीं, केवल पारस्परिकता है।",
+            english: "In existence, there is no opposition, only complementarity.",
+            interpretation: "From a deluded perspective, the world appears full of conflict and opposition (e.g., predator vs. prey). From a place of understanding, these are seen as expressions of 'parasparikta' or complementarity. Each element fulfills a role that sustains the whole. The only real conflict is within the deluded human mind.",
+            reference: "Manav Anubhav Darshan, Page 29"
+        },
+        {
+            hindi: "शिक्षा का उद्देश्य भ्रम-मुक्ति है।",
+            english: "The purpose of education is freedom from delusion.",
+            interpretation: "True education is not merely about accumulating information or acquiring skills for a job. Its ultimate purpose ('uddeshya') is 'bhram-mukti'—to liberate the individual from their illusions, assumptions, and false beliefs, enabling them to see reality as it is.",
+            reference: "Manav Abhyas Darshan, Page 185"
+        },
+        {
+            hindi: "संवेदनाएं सूचना हैं, सत्य नहीं।",
+            english: "Sensations are information, not the truth.",
+            interpretation: "Our senses provide us with data about the external world, but this data is not reality itself. To mistake sensory pleasure or pain for ultimate happiness or suffering is a fundamental error. Understanding ('samaj') is required to correctly interpret this sensory information and see the underlying truth.",
+            reference: "Manav Anubhav Darshan, Page 41"
+        },
+        {
+            hindi: "अखण्ड समाज की कल्पना, समाधान-समृद्धि पूर्वक ही संभव है।",
+            english: "The vision of an undivided society is possible only through resolution and prosperity.",
+            interpretation: "A truly united, 'undivided society' (akhand samaj) cannot be created through political maneuvering. It can only emerge when its individuals have achieved 'samadhan' (inner resolution of all questions) and 'samriddhi' (the feeling of having more than enough), eliminating the root causes of conflict and competition.",
+            reference: "Manav Vyavahar Darshan, Page 121"
+        },
+        {
+            hindi: "मानव का वैभव उसका समाधान है।",
+            english: "The glory of a human is their resolution.",
+            interpretation: "Human greatness ('vaibhav') is not measured by wealth, power, or fame. The true glory of a human being lies in their 'samadhan'—a state of being where all internal conflicts, questions, and doubts have been resolved. This inner clarity is the ultimate treasure.",
+            reference: "Manav Karma Darshan, Page 160"
+        },
+        {
+            hindi: "जीवन सहज अमरत्व है, शरीर एक उपकरण।",
+            english: "Life is naturally immortal, the body is an instrument.",
+            interpretation: "This clarifies the relationship between consciousness ('Jeevan') and the physical body ('sharir'). Jeevan is the eternal, conscious entity that does not die. The body is a temporary instrument that Jeevan uses to interact with the material world. Understanding this distinction removes the fear of death.",
+            reference: "Manav Anubhav Darshan, Page 55"
+        },
+        {
+            hindi: "अध्ययन पूर्वक ही भ्रम का निवारण होता है।",
+            english: "Delusion is dispelled only through study.",
+            interpretation: "Delusion ('bhram') is not a permanent stain but a form of ignorance. It cannot be wished away or fought against directly. It is removed through 'adhyayan'—a dedicated and systematic study of reality, of existence, and of oneself. Clarity naturally replaces confusion through this process.",
+            reference: "Manav Abhyas Darshan, Page 33"
+        },
+        {
+            hindi: "व्यवस्था में जीना ही आनंद है।",
+            english: "To live in order is bliss.",
+            interpretation: "Bliss ('anand') is not a fleeting emotional high. It is the steady, natural state that arises from living in harmony with 'vyavastha'—the inherent order of existence. This includes order within oneself, in relationships, in society, and with nature. Misery is a symptom of living in disorder.",
+            reference: "Manav Vyavahar Darshan, Page 130"
+        },
+        {
+            hindi: "प्रेम, स्नेह, विश्वास, सम्मान, कृतज्ञता ही मानवीय मूल्य हैं।",
+            english: "Love, affection, trust, respect, gratitude are the human values.",
+            interpretation: "These are not just positive emotions; they are defined as the fundamental 'values' (mulya) that are expressed in human relationships once understanding is present. They are the established, fulfilling states of interaction, and their absence indicates a lack of clarity.",
+            reference: "Manav Vyavahar Darshan, Page 48"
+        },
+        {
+            hindi: "सत्य के लिए कोई तर्क नहीं, केवल प्रस्तुति है।",
+            english: "For the truth, there is no argument, only presentation.",
+            interpretation: "Truth ('satya') is not a matter of opinion or debate. It cannot be proven or disproven through argumentation. It can only be understood and then 'presented' or demonstrated for others to see for themselves. The work is not to convince, but to make reality visible.",
+            reference: "Manav Anubhav Darshan, Page 102"
+        },
+        {
+            hindi: "प्रकृति संतुलन पूर्वक ही enriquecida होती है।",
+            english: "Nature is enriched only through balance.",
+            interpretation: "The richness, diversity, and sustainability of nature depend on a delicate state of 'santulan' or balance. Human activities that disrupt this balance inevitably lead to depletion and destruction. To work with nature is to understand and respect its inherent balancing mechanisms.",
+            reference: "Manav Karma Darshan, Page 41"
+        },
+        {
+            hindi: "मानव अपनी कल्पना में जीता है, जब तक वह सत्य को नहीं पहचानता।",
+            english: "A human lives in their imagination, until they recognize the truth.",
+            interpretation: "The deluded mind does not interact with reality directly. It lives within a world constructed by its own 'kalpana'—its beliefs, assumptions, fears, and desires. The journey of awakening is the process of moving from this imaginary world to the direct perception of 'satya' or truth.",
+            reference: "Manav Abhyas Darshan, Page 99"
+        },
+        {
+            hindi: "समस्या का मूल, समाधान से अनभिज्ञता है।",
+            english: "The root of a problem is ignorance of the solution.",
+            interpretation: "This reframes the nature of problems. A problem is not an external entity that attacks us. It is an internal state of being 'unaware' of the solution which already exists within the framework of reality. The focus should not be on the problem, but on seeking the understanding that reveals the solution.",
+            reference: "Manav Vyavahar Darshan, Page 31"
+        },
+        {
+            hindi: "अधिकार और कर्तव्य एक ही सिक्के के दो पहलू हैं।",
+            english: "Rights and duties are two sides of the same coin.",
+            interpretation: "In a just system, one cannot exist without the other. The demand for a right ('adhikar') inherently implies the acceptance of a corresponding duty ('kartavya'). A society that focuses only on rights without emphasizing duties becomes imbalanced and conflict-ridden.",
+            reference: "Manav Karma Darshan, Page 125"
+        },
+        {
+            hindi: "सार्थकता की पहचान ही संतुष्टि है।",
+            english: "The recognition of purposefulness is contentment.",
+            interpretation: "Contentment ('santushti') is not achieved by fulfilling endless desires. It is an inner state that arises from recognizing the 'sarthakta'—the meaning and purposefulness—of one's actions, one's relationships, and one's existence within the larger whole.",
+            reference: "Manav Vyavahar Darshan, Page 142"
+        },
+        {
+            hindi: "अनुकरण से नहीं, अनुसंधान से जागृति होती है।",
+            english: "Awakening comes from investigation, not from imitation.",
+            interpretation: "Blindly following a teacher, a scripture, or a tradition ('anukaran') cannot lead to true awakening. 'Jagruti' requires 'anusandhan'—a personal, sincere investigation into the nature of reality. It is a journey of discovery, not of mere belief.",
+            reference: "Manav Abhyas Darshan, Page 22"
+        },
+        {
+            hindi: "न्याय सुलभता ही समाज में शांति का आधार है।",
+            english: "The accessibility of justice is the basis of peace in society.",
+            interpretation: "Social peace ('shanti') is not merely the absence of war. It is a state that can only be established when every member of the society feels that justice ('nyay') is accessible and assured. When people lose faith in receiving justice, unrest and conflict are inevitable.",
+            reference: "Manav Vyavahar Darshan, Page 64"
+        },
+        {
+            hindi: "भय, भ्रम का सह-उत्पाद है।",
+            english: "Fear is a by-product of delusion.",
+            interpretation: "Fear is not a fundamental reality. It is an emotional response ('sah-utpad') that arises directly from 'bhram'—a deluded or incorrect understanding of a situation. When we see things clearly, as they are, the basis for fear dissolves. Therefore, the antidote to fear is clarity, not courage.",
+            reference: "Manav Abhyas Darshan, Page 115"
+        },
+        {
+            hindi: "जीवन ज्ञान के बिना आचरण में निश्चितता नहीं।",
+            english: "Without the knowledge of life (consciousness), there is no certainty in conduct.",
+            interpretation: "To achieve unwavering, definite humane conduct ('acharan'), one must first have 'Jeevan Gyaan'—the correct understanding of the conscious unit, the 'self'. Without knowing who and what we are, our actions will be inconsistent, driven by shifting beliefs, moods, and external pressures.",
+            reference: "Manav Anubhav Darshan, Page 38"
+        },
+        {
+            hindi: "पीड़ा का कारण अतृप्त आशा है।",
+            english: "The cause of suffering is unfulfilled expectation.",
+            interpretation: "Suffering ('peeda') is not caused by events themselves, but by our 'asha' or expectations about how events should unfold. When reality does not match our pre-conceived notions, we experience pain. The solution lies not in trying to control reality, but in aligning our expectations with it.",
+            reference: "Manav Karma Darshan, Page 108"
+        },
+        {
+            hindi: "सह-अस्तित्व में जीना ही योग है।",
+            english: "To live in co-existence is Yoga.",
+            interpretation: "This offers a new definition of 'Yoga'. It is not merely a set of physical postures or breathing exercises, but the state of being perfectly aligned and united with the fundamental reality of 'Sah-astitva' or co-existence. It is the union of the individual with the whole.",
+            reference: "Manav Anubhav Darshan, Page 8"
+        },
+        {
+            hindi: "उत्सवधर्मिता, समझदार समाज का लक्षण है।",
+            english: "A celebratory nature is a characteristic of a wise society.",
+            interpretation: "A society that has achieved understanding ('samajdar samaj') is not grim or austere. Its natural state is 'utsavdharmita'—a continuous state of celebration. This is not about partying, but about finding joy and purpose in every aspect of life, which is lived in harmony and abundance.",
+            reference: "Manav Vyavahar Darshan, Page 150"
+        },
+        {
+            hindi: "मान्यताएं सत्य की जांच के लिए बाधा हैं।",
+            english: "Beliefs are an obstacle to the investigation of truth.",
+            interpretation: "When we hold rigidly to our 'manyata' or beliefs, we filter reality through them. This prevents us from seeing what is actually there. A true seeker of truth must be willing to set aside all beliefs and investigate reality with an open mind.",
+            reference: "Manav Abhyas Darshan, Page 19"
+        },
+        {
+            hindi: "व्यवहार में ईमानदारी ही विश्वास का पोषण करती है।",
+            english: "Honesty in behavior is what nourishes trust.",
+            interpretation: "Trust ('vishwas') is not built on words or promises alone. It is nourished and strengthened by consistent 'imandari' or honesty in our actions and dealings ('vyavahar'). Every honest act is a deposit into the account of trust.",
+            reference: "Manav Vyavahar Darshan, Page 53"
+        },
+        {
+            hindi: "क्रोध एक अस्थायी पागलपन है जो अधूरेपन से उत्पन्न होता है।",
+            english: "Anger is a temporary madness born from incompleteness.",
+            interpretation: "Anger is described not as a powerful emotion but as a form of temporary insanity. It arises from a feeling of 'adhurapan' or incompleteness—a sense that things are not right or that we lack something. A person who is internally resolved and complete has no basis for anger.",
+            reference: "Manav Karma Darshan, Page 112"
+        },
+        {
+            hindi: "समाधान के बिना सुख की कल्पना, मृगतृष्णा है।",
+            english: "Imagining happiness without resolution is a mirage.",
+            interpretation: "Many people chase happiness ('sukh') through external achievements, possessions, or relationships. However, this quote states that true, lasting happiness is impossible without 'samadhan'—the internal resolution of one's contradictions. Chasing happiness without this foundation is like a thirsty deer chasing a 'mrigatrishna' or mirage in the desert.",
+            reference: "Manav Abhyas Darshan, Page 105"
+        },
+        {
+            hindi: "प्रकृति के साथ सह-अस्तित्व ही स्वास्थ्य है।",
+            english: "Co-existence with nature is health.",
+            interpretation: "Health ('swasthya') is not just the absence of disease in the body. It is a holistic state that comes from living in a harmonious relationship ('sah-astitva') with the natural world. Disrespecting nature's laws and rhythms inevitably leads to ill-health, both for the individual and the planet.",
+            reference: "Manav Karma Darshan, Page 39"
+        },
+        {
+            hindi: "जागृत व्यक्ति के लिए हर कर्म पूजा है।",
+            english: "For an awakened person, every action is worship.",
+            interpretation: "Worship ('puja') is not confined to a specific ritual or place. For an individual who is awakened ('jagrut'), every action—whether work, conversation, or daily chores—is performed with awareness and dedication as an offering to the larger order of existence. Life itself becomes a sacred act.",
+            reference: "Manav Anubhav Darshan, Page 120"
+        },
+        {
+            hindi: "साक्ष्य की भाषा मौन है।",
+            english: "The language of evidence is silence.",
+            interpretation: "The ultimate evidence or proof of truth is not found in verbose explanations or complex theories. It is found in a state of 'maun' or inner silence, where the mind is still and receptive. In this quietude, the truth reveals itself through direct perception, beyond the limitations of words.",
+            reference: "Manav Anubhav Darshan, Page 103"
+        },
+        {
+            hindi: "परंपरा का मूल्यांकन विवेकपूर्ण ढंग से आवश्यक है।",
+            english: "The evaluation of tradition is necessary in a discerning manner.",
+            interpretation: "Tradition ('parampara') should neither be blindly accepted nor wholesale rejected. It is essential to evaluate it with 'vivek' or discernment, retaining what is valuable and conducive to human well-being, and discarding what is based on superstition or inhumanity.",
+            reference: "Manav Vyavahar Darshan, Page 165"
+        },
+        {
+            hindi: "अस्तित्व में कुछ भी आकस्मिक नहीं है, सब कुछ नियमानुसार है।",
+            english: "In existence, nothing is accidental; everything is according to law.",
+            interpretation: "This refutes the idea of chance or chaos. The universe operates on the basis of 'niyam' or universal laws. Events may seem random to an observer with incomplete knowledge, but from a complete perspective, everything unfolds according to a predictable, cause-and-effect order.",
+            reference: "Manav Abhyas Darshan, Page 48"
+        },
+        {
+            hindi: "मानव का अध्ययन ही सभी समस्याओं का समाधान है।",
+            english: "The study of the human being is the solution to all problems.",
+            interpretation: "All problems, whether social, political, or environmental, are ultimately created by humans. Therefore, the key to solving them lies in a deep and correct 'adhyayan' or study of the human being—our nature, our consciousness, and our purpose. Understanding the cause is the only way to find the solution.",
+            reference: "Manav Vyavahar Darshan, Page 5"
+        },
+        {
+            hindi: "स्वतंत्रता, स्वेच्छाचारिता नहीं, बल्कि नियम-पूर्णता में है।",
+            english: "Freedom is not arbitrariness, but being complete in the law.",
+            interpretation: "This distinguishes true freedom ('swatantrata') from license ('swechacharìta'). License is doing whatever one's whims dictate, which leads to chaos. True freedom is the state of having understood the universal laws ('niyam') so completely that one's actions are naturally and effortlessly in harmony with them.",
+            reference: "Manav Karma Darshan, Page 14"
+        },
+        {
+            hindi: "प्रसन्नता, समाधान की अभिव्यक्ति है।",
+            english: "Cheerfulness is the expression of resolution.",
+            interpretation: "Genuine, lasting cheerfulness ('prasannata') is not the result of a joke or a pleasant event. It is the natural, outward expression ('abhivyakti') of an inner state of 'samadhan'. A person who is resolved within themselves radiates a calm and steady cheerfulness.",
+            reference: "Manav Vyavahar Darshan, Page 143"
+        },
+        {
+            hindi: "ज्ञान का अभाव ही दुःख का मूल कारण है।",
+            english: "The absence of knowledge is the root cause of suffering.",
+            interpretation: "Suffering ('dukh') is not a punishment or a random event. Its single root cause ('mool karan') is 'gyan ka abhav'—the absence of right knowledge about oneself and reality. Where there is clarity and understanding, suffering cannot exist.",
+            reference: "Manav Anubhav Darshan, Page 15"
+        },
+        {
+            hindi: "विश्वासघात, अपूर्ण मूल्यांकन का परिणाम है।",
+            english: "Betrayal is the result of incomplete evaluation.",
+            interpretation: "The act of betraying trust does not happen in a vacuum. It stems from an 'apoorna mulyankan'—a failure to correctly evaluate the long-term consequences of one's actions and the true value of a relationship. It is an act of short-sightedness born from delusion.",
+            reference: "Manav Vyavahar Darshan, Page 54"
+        },
+        {
+            hindi: "अस्तित्व में हर इकाई का अपना महत्व है।",
+            english: "In existence, every unit has its own significance.",
+            interpretation: "Nothing is insignificant. From a single cell to a distant star, every 'ikai' or unit has its own unique nature and contributes to the whole. Recognizing this inherent 'mahatva' or significance in everything fosters a sense of reverence and prevents exploitation.",
+            reference: "Manav Karma Darshan, Page 22"
+        },
+        {
+            hindi: "सही समझ के बिना सही कर्म संभव नहीं।",
+            english: "Without right understanding, right action is not possible.",
+            interpretation: "Action ('karma') is merely the expression of one's understanding ('samaj'). If the understanding is flawed or incomplete, the action will inevitably be flawed as well. The priority, therefore, must always be to attain right understanding, as right action will naturally follow.",
+            reference: "Manav Abhyas Darshan, Page 60"
+        },
+        {
+            hindi: "समाधानित व्यक्ति ही समाज के लिए वरदान है।",
+            english: "A resolved person is a boon for society.",
+            interpretation: "An individual who has achieved 'samadhan' or inner resolution is no longer a source of problems. They do not create conflict, exploit others, or spread confusion. By their very presence and actions, they become a 'vardan' or a blessing to the society around them, contributing to harmony and order.",
+            reference: "Manav Vyavahar Darshan, Page 175"
+        },
+        {
+            hindi: "अस्तित्व एक खुली किताब है, पढ़ना आना चाहिए।",
+            english: "Existence is an open book; one must know how to read.",
+            interpretation: "Reality holds no secrets. It is like an 'open book', available for all to see. The problem is not with the book, but with the reader. 'Knowing how to read' means having the clarity of perception, free from the distortions of belief and delusion, to see what is plainly there.",
+            reference: "Manav Anubhav Darshan, Page 11"
+        },
+        {
+            hindi: "संतुलित मस्तिष्क ही सही निर्णय ले सकता है।",
+            english: "Only a balanced mind can make right decisions.",
+            interpretation: "Decision-making is clouded by strong emotions, biases, and desires. A 'santulit mastishk'—a mind that is calm, stable, and balanced—is the prerequisite for 'sahi nirnay' or correct judgment. Therefore, cultivating inner balance is a practical necessity for a successful life.",
+            reference: "Manav Karma Darshan, Page 91"
+        },
+        {
+            hindi: "मानवीय शिक्षा, तकनीकी शिक्षा से श्रेष्ठ है।",
+            english: "Humane education is superior to technical education.",
+            interpretation: "Technical education provides skills to make a living, but humane education ('manaviya shiksha') provides the understanding of how to live. It addresses the fundamental questions of human existence. While both are necessary, humane education is 'shreshth' or superior because it provides the ethical framework within which technical skills should be used.",
+            reference: "Manav Abhyas Darshan, Page 188"
+        },
+        {
+            hindi: "अहंकार, सत्य और स्वयं के बीच की दीवार है।",
+            english: "Ego is the wall between truth and the self.",
+            interpretation: "The 'self' (the conscious Jeevan) is inherently capable of knowing the truth. However, the 'ahankar'—the false identity constructed from beliefs, achievements, and possessions—acts as a 'diwar' or wall, blocking this direct perception. Dissolving the ego is essential for self-realization.",
+            reference: "Manav Anubhav Darshan, Page 62"
+        },
+        {
+            hindi: "प्रकृति का शोषण, स्वयं का विनाश है।",
+            english: "The exploitation of nature is self-destruction.",
+            interpretation: "Humanity is not separate from nature; we are an integral part of it. Therefore, any act of 'shoshan' or exploitation against the natural world is ultimately an act of 'svayam ka vinash' or self-destruction. The consequences of ecological imbalance will inevitably affect humanity.",
+            reference: "Manav Karma Darshan, Page 40"
+        },
+        {
+            hindi: "संवाद का उद्देश्य समझना है, जीतना नहीं।",
+            english: "The purpose of dialogue is to understand, not to win.",
+            interpretation: "In a debate, the goal is to win an argument. In a true 'samvad' or dialogue, the goal is mutual understanding. It requires listening, openness, and a genuine desire to see the other's perspective. When the focus shifts from winning to understanding, resolution becomes possible.",
+            reference: "Manav Vyavahar Darshan, Page 101"
+        },
+        {
+            hindi: "शंका का समाधान ज्ञान है।",
+            english: "The solution to doubt is knowledge.",
+            interpretation: "Doubt ('shanka') arises in the absence of clarity. It cannot be resolved by belief or by suppressing it. The only true 'samadhan' for doubt is 'gyan'—clear, direct knowledge that leaves no room for uncertainty.",
+            reference: "Manav Abhyas Darshan, Page 35"
+        },
+        {
+            hindi: "निर्भयता, ज्ञान की सह-यात्री है।",
+            english: "Fearlessness is the co-traveler of knowledge.",
+            interpretation: "As knowledge ('gyan') of reality increases, fear ('bhay') naturally decreases. They are inversely proportional. True fearlessness ('nirbhayata') is not an aggressive posture, but the calm and steady state that accompanies a clear understanding of existence. It is a natural outcome of the journey towards truth.",
+            reference: "Manav Anubhav Darshan, Page 43"
+        },
+        {
+            hindi: "न्याय की प्रत्याशा हर मानव में होती है।",
+            english: "The expectation of justice exists in every human.",
+            interpretation: "The desire for and expectation of 'nyay' or justice is not culturally conditioned; it is an innate and universal aspect of human consciousness. Recognizing this inherent 'pratyasha' is the first step toward building relationships and societies based on mutual fulfillment.",
+            reference: "Manav Vyavahar Darshan, Page 63"
+        },
+        {
+            hindi: "अनुभव के बाद कोई प्रश्न शेष नहीं रहता।",
+            english: "After experience, no question remains.",
+            interpretation: "The human mind is a question-generating machine. These questions are only truly silenced by 'anubhav'—the direct, experiential realization of truth. Intellectual answers may provide temporary satisfaction, but only direct experience brings the questioning process to a complete and final end.",
+            reference: "Manav Anubhav Darshan, Page 140"
+        },
+        {
+            hindi: "समृद्धि एक मानसिक स्थिति है, वस्तु-संग्रह नहीं।",
+            english: "Prosperity is a mental state, not the collection of things.",
+            interpretation: "True prosperity ('samriddhi') is not defined by the quantity of one's possessions. It is a 'mansik sthiti'—a mental state of feeling that one has more than enough for one's needs. A person can have vast wealth and still feel a sense of lack, while another with simple means can feel prosperous.",
+            reference: "Manav Karma Darshan, Page 75"
+        },
+        {
+            hindi: "सहयोग, संघर्ष से श्रेष्ठ है।",
+            english: "Cooperation is superior to conflict.",
+            interpretation: "Conflict ('sangharsh') is born from the delusion of separateness and competing interests. Cooperation ('sahyog') is born from the understanding of interconnectedness and shared goals. It is a more intelligent, efficient, and humane way of functioning that is inherently 'shreshth' or superior.",
+            reference: "Manav Vyavahar Darshan, Page 110"
+        },
+        {
+            hindi: "वर्तमान में जीना ही जीवन का सदुपयोग है।",
+            english: "Living in the present is the right use of life.",
+            interpretation: "The mind tends to dwell in the past (regret, nostalgia) or the future (anxiety, fantasy). This is a misuse of consciousness. The 'sadupayog' or correct use of life is to be fully present in the 'vartaman' or the now, for it is the only place where reality exists and action is possible.",
+            reference: "Manav Abhyas Darshan, Page 111"
+        },
+        {
+            hindi: "मानवीयता ही मानव का एकमात्र धर्म है।",
+            english: "Humanity is the only religion of a human.",
+            interpretation: "This statement transcends all sectarian definitions of religion. The true 'dharma' or innate nature of a human being is 'manaviyata'—to live with humane conduct. All other labels and identities are secondary. To be fully human is the ultimate spiritual practice.",
+            reference: "Manav Vyavahar Darshan, Page 37"
+        },
+        {
+            hindi: "समझदार व्यक्ति के लिए कोई समस्या नहीं, केवल स्थितियाँ हैं।",
+            english: "For a wise person, there are no problems, only situations.",
+            interpretation: "The label 'problem' is a product of a confused mind that feels overwhelmed. A person with 'samaj' or understanding does not see problems; they see 'sthitiyan' or situations. They approach each situation with clarity, analyze it, and take appropriate action. The emotional charge of 'problem' is absent.",
+            reference: "Manav Anubhav Darshan, Page 78"
+        },
+        {
+            hindi: "सत्य बोलने के लिए साहस नहीं, समझ चाहिए।",
+            english: "To speak the truth requires not courage, but understanding.",
+            interpretation: "The need for 'courage' to speak the truth implies a fear of consequences. When one has a deep 'samaj' or understanding of reality, speaking the truth becomes a natural and effortless act. The clarity of understanding itself removes the fear, making courage redundant.",
+            reference: "Manav Vyavahar Darshan, Page 70"
+        },
+        {
+            hindi: "पूर्णता की चाह ही जीवन की प्रेरणा है।",
+            english: "The desire for completeness is the inspiration of life.",
+            interpretation: "The constant striving and seeking that characterizes human life is driven by an innate 'chah' or desire for 'poornata'—completeness, resolution, and fulfillment. This is the fundamental 'prerna' or motivation of 'Jeevan'. The entire journey is about satisfying this one deep longing for wholeness.",
+            reference: "Manav Karma Darshan, Page 12"
+        },
+        {
+            hindi: "अस्तित्व में विकास है, विनाश नहीं।",
+            english: "In existence, there is evolution, not destruction.",
+            interpretation: "What appears to be 'vinash' or destruction is merely a process of transformation. A seed is 'destroyed' to become a tree; a tree 'decays' to enrich the soil. From a larger perspective, existence is in a constant state of 'vikas' or evolution. Nothing is ever truly lost, only changed in form.",
+            reference: "Manav Anubhav Darshan, Page 31"
+        },
+        {
+            hindi: "परिवार, मानवीयता की पहली पाठशाला है।",
+            english: "The family is the first school of humanity.",
+            interpretation: "The values of trust, respect, cooperation, and justice are first learned and practiced within the 'parivar' or family unit. It is the primary environment where one learns how to live in relationship. A healthy family is therefore the foundation of a healthy society.",
+            reference: "Manav Vyavahar Darshan, Page 135"
+        },
+        {
+            hindi: "सुंदरता, संतुलन और सामंजस्य में है।",
+            english: "Beauty is in balance and harmony.",
+            interpretation: "True beauty ('sundarta') is not merely a subjective aesthetic preference. It is an objective quality that arises from 'santulan' (balance) and 'samanjasya' (harmony). We perceive something as beautiful when its parts are in a harmonious relationship with each other and with the whole, reflecting the inherent order of existence.",
+            reference: "Manav Abhyas Darshan, Page 155"
+        },
+        {
+            hindi: "हर इकाई पूरक है, कोई भी अपूर्ण नहीं।",
+            english: "Every unit is complementary; none is incomplete.",
+            interpretation: "In its own nature, every 'ikai' or unit is complete and perfect. Its role is to be 'poorak'—to complement the other units in the grand design of existence. The feeling of 'apoornata' or incompleteness is exclusive to the deluded human, who is unaware of their own nature and role.",
+            reference: "Manav Karma Darshan, Page 23"
+        },
+        {
+            hindi: "प्रेम एक अनुभव है, भावना नहीं।",
+            english: "Love is an experience, not an emotion.",
+            interpretation: "Emotion ('bhavna') is transient and dependent on external conditions. True love ('prem') is defined here as an 'anubhav'—a constant, steady state of being that arises from the experiential understanding of oneness and co-existence. It is a state of acceptance and unconditional recognition of the other.",
+            reference: "Manav Anubhav Darshan, Page 95"
+        },
+        {
+            hindi: "तर्क, समझ तक पहुँचने का एक उपकरण है, मंजिल नहीं।",
+            english: "Logic is a tool to reach understanding, not the destination.",
+            interpretation: "Logic ('tark') is a valuable 'upakaran' or instrument for clearing away contradictions and inconsistencies in thought. However, it has its limits. The final destination ('manzil') is 'samaj'—a direct, holistic understanding that often transcends linear logic.",
+            reference: "Manav Abhyas Darshan, Page 36"
+        },
+        {
+            hindi: "स्वस्थ समाज का आधार, स्वस्थ व्यक्ति है।",
+            english: "The basis of a healthy society is the healthy individual.",
+            interpretation: "Social problems cannot be solved by structural changes alone. The foundation ('aadhar') of a 'svasth samaj' is the 'svasth vyakti'—an individual who is mentally and ethically healthy, meaning they are resolved and live with humane conduct. The whole is only as healthy as its parts.",
+            reference: "Manav Vyavahar Darshan, Page 174"
+        },
+        {
+            hindi: "जीवन में संगीत, व्यवस्था का प्रतिबिंब है।",
+            english: "Music in life is a reflection of order.",
+            interpretation: "When a life is lived in 'vyavastha' or order, it has a natural 'sangeet' or music to it. There is rhythm, harmony, and grace. A chaotic, disordered life is like a cacophony. The external harmony we appreciate in music is a reflection of the internal harmony we seek in life.",
+            reference: "Manav Karma Darshan, Page 148"
+        },
+        {
+            hindi: "वास्तविकता को स्वीकारना ही शांति का पहला कदम है।",
+            english: "Accepting reality is the first step to peace.",
+            interpretation: "Much of our inner turmoil comes from resisting 'what is' and wishing for things to be different. 'Shanti' or peace begins with the simple yet profound act of 'svikarna'—accepting reality as it is, without argument or resistance. From this place of acceptance, right action can begin.",
+            reference: "Manav Abhyas Darshan, Page 112"
+        },
+        {
+            hindi: "जागृति एक व्यक्तिगत यात्रा है, पर इसका फल सार्वभौमिक है।",
+            english: "Awakening is a personal journey, but its fruit is universal.",
+            interpretation: "The work of achieving 'jagruti' or awakening must be done by each individual for themselves. However, the 'phal' or fruit of this personal transformation is not for the individual alone. An awakened person naturally contributes to the harmony and well-being of the entire world, making the benefit 'sarvabhaumik' or universal.",
+            reference: "Manav Anubhav Darshan, Page 152"
+        },
+        {
+            hindi: "प्रकृति के प्रति कृतज्ञता ही सच्ची पूजा है।",
+            english: "Gratitude towards nature is true worship.",
+            interpretation: "True worship ('sachi puja') is not about performing rituals. It is a state of 'kritagyata'—a deep and abiding gratitude for all that nature provides. This feeling of gratitude leads to a relationship of respect and care, which is the most authentic form of worship.",
+            reference: "Manav Karma Darshan, Page 43"
+        },
+        {
+            hindi: "भाषा का प्रयोजन अर्थ का संप्रेषण है, विवाद नहीं।",
+            english: "The purpose of language is the communication of meaning, not conflict.",
+            interpretation: "Language ('bhasha') is a tool for 'sampreshan'—conveying meaning and fostering mutual understanding. When it is used to dominate, deceive, or create 'vivad' (dispute), it is a misuse of this powerful human faculty.",
+            reference: "Manav Vyavahar Darshan, Page 100"
+        },
+        {
+            hindi: "जो दूसरों को नियंत्रित करने की कोशिश करता है, वह स्वयं पर नियंत्रण खो देता है।",
+            english: "One who tries to control others, loses control over oneself.",
+            interpretation: "The desire to control others stems from one's own inner insecurity and disorder. The effort and attention required for this external control inevitably lead to neglecting one's own inner state, resulting in a loss of 'svayam par niyantran' or self-mastery.",
+            reference: "Manav Karma Darshan, Page 99"
+        },
+        {
+            hindi: "समाधान एक बार होता है, और सदा के लिए रहता है।",
+            english: "Resolution happens once, and remains forever.",
+            interpretation: "Unlike fleeting pleasures or temporary fixes, true 'samadhan'—the resolution of a fundamental question about reality—is a permanent achievement. Once a delusion is dispelled by understanding, it does not return. It is a stable, irreversible transformation of consciousness.",
+            reference: "Manav Anubhav Darshan, Page 80"
+        },
+        {
+            hindi: "अस्तित्व में कोई भी श्रेष्ठ या हीन नहीं, सभी की अपनी भूमिका है।",
+            english: "In existence, nothing is superior or inferior; all have their own role.",
+            interpretation: "The concepts of 'shreshth' (superior) and 'heen' (inferior) are creations of the deluded human mind, used to make comparisons and judgments. In reality, every unit has its own unique and essential 'bhumika' or role to play within the whole. An atom is as important as a star for existence to be what it is.",
+            reference: "Manav Vyavahar Darshan, Page 23"
+        },
+        {
+            hindi: "धैर्य, समझदारी की प्रतीक्षा करने की क्षमता है।",
+            english: "Patience is the ability to wait for understanding to dawn.",
+            interpretation: "Patience ('dhairya') is not passive waiting or suppression of frustration. It is an active state of recognizing that understanding ('samajdari') has its own time to ripen. It is the wisdom to allow the process of clarification to unfold without forcing it, trusting that the solution will emerge.",
+            reference: "Manav Abhyas Darshan, Page 120"
+        },
+        {
+            hindi: "मानव का आचरण उसके ज्ञान का दर्पण है।",
+            english: "A human's conduct is the mirror of their knowledge.",
+            interpretation: "One's true level of knowledge ('gyan') is not reflected in the words they speak or the books they have read, but in their 'acharan' or conduct. Behavior is the 'darpan' or mirror that provides an honest and accurate reflection of one's inner state of understanding.",
+            reference: "Manav Karma Darshan, Page 5"
+        },
+        {
+            hindi: "सह-अस्तित्व को समझना ही आध्यात्मिकता है।",
+            english: "To understand co-existence is spirituality.",
+            interpretation: "Spirituality ('adhyatmikata') is demystified here. It is not about otherworldly beliefs or practices. It is simply the process of understanding and realizing the fundamental principle of 'Sah-astitva'—that everything exists in a state of interconnectedness and mutual dependence. This understanding is the core of all spiritual pursuits.",
+            reference: "Manav Anubhav Darshan, Page 9"
+        },
+        {
+            hindi: "न्यायपूर्ण संबंध ही सुख का आधार है।",
+            english: "Just relationships are the foundation of happiness.",
+            interpretation: "Lasting happiness ('sukh') cannot be found in isolation. It is primarily experienced in our interactions with others. The foundation ('aadhar') for this happiness is 'nyaypurna sambandh'—relationships where there is mutual fulfillment, fairness, and a correct evaluation of each other's roles and responsibilities.",
+            reference: "Manav Vyavahar Darshan, Page 65"
+        },
+        {
+            hindi: "विचारों की स्पष्टता ही कर्मों की स्पष्टता लाती है।",
+            english: "Clarity of thoughts brings clarity of actions.",
+            interpretation: "Confused or contradictory actions are a direct result of confused or contradictory thoughts. The outer world of our actions is a reflection of our inner world of thoughts. Therefore, the first step towards effective and harmonious action is to achieve 'vicharon ki spashtata'—clarity in our own thinking.",
+            reference: "Manav Abhyas Darshan, Page 61"
+        },
+        {
+            hindi: "परिश्रम का सम्मान करना ही समृद्धि का द्वार है।",
+            english: "Respecting labor is the doorway to prosperity.",
+            interpretation: "A society that looks down upon physical or mental labor ('parishram') and does not give it due respect cannot achieve true 'samriddhi' or prosperity. Recognizing the value and dignity of all forms of productive work is the 'dwar' or gateway to a balanced and abundant society.",
+            reference: "Manav Karma Darshan, Page 72"
+        },
+        {
+            hindi: "अनुभव के प्रकाश में जीना ही जागृति है।",
+            english: "To live in the light of experience is awakening.",
+            interpretation: "'Jagruti' or awakening is not a one-time event but a continuous state of being. It means living life guided by the 'prakash' or light of 'anubhav'—the direct, experiential knowledge of truth—rather than being guided by second-hand beliefs, opinions, or momentary impulses.",
+            reference: "Manav Anubhav Darshan, Page 145"
+        },
+        {
+            hindi: "विरोध, समझ की कमी का संकेत है।",
+            english: "Opposition is a sign of a lack of understanding.",
+            interpretation: "When we are in 'virodh' or opposition to a person or a situation, it is a 'sanket' or sign that our 'samaj' or understanding is incomplete. With complete understanding, one sees the reasons and context behind everything, and opposition gives way to compassion and appropriate action.",
+            reference: "Manav Vyavahar Darshan, Page 111"
+        },
+        {
+            hindi: "प्रकृति के नियम अपरिवर्तनीय और सार्वभौम हैं।",
+            english: "The laws of nature are unchangeable and universal.",
+            interpretation: "The fundamental laws ('niyam') that govern existence are not subject to human whims or desires. They are 'aparivartaniya' (unchangeable) and 'sarvabhaum' (universal), applying everywhere and at all times. The only intelligent way to live is to understand these laws and align our lives with them.",
+            reference: "Manav Abhyas Darshan, Page 47"
+        },
+        {
+            hindi: "सही शिक्षा, सही संस्कार का आधार है।",
+            english: "Right education is the basis of right culture.",
+            interpretation: "'Sanskar' refers to the deep-seated values and tendencies that shape our behavior. 'Sahi sanskar'—a culture of humanity—cannot be formed without 'sahi shiksha' or right education, which provides the clarity and understanding upon which these values are built.",
+            reference: "Manav Karma Darshan, Page 170"
+        },
+        {
+            hindi: "सत्य ही अंतिम विश्राम स्थल है।",
+            english: "Truth is the final resting place.",
+            interpretation: "The restless seeking of the human mind, which moves from one desire to another, one belief to another, only comes to a complete and final rest ('antim vishram sthal') when it arrives at 'Satya'—the direct perception of reality. In truth, all seeking ends.",
+            reference: "Manav Anubhav Darshan, Page 160"
+        },
+        {
+            hindi: "संबंधों का निर्वाह एक कला है जो समझदारी से आती है।",
+            english: "Fulfilling relationships is an art that comes from understanding.",
+            interpretation: "Successfully navigating and sustaining relationships ('sambandhon ka nirvah') is not automatic. It is a 'kala' or an art. This art is not based on techniques or tricks, but on 'samajdari'—a deep understanding of oneself, the other person, and the principles of humane interaction.",
+            reference: "Manav Vyavahar Darshan, Page 45"
+        },
+        {
+            hindi: "मानसिक दासता, शारीरिक दासता से भी बदतर है।",
+            english: "Mental slavery is worse than physical slavery.",
+            interpretation: "Physical slavery ('sharirik dasata') restricts the body, but mental slavery ('mansik dasata')—being enslaved to false beliefs, ideologies, or desires—restricts the consciousness itself. It prevents one from thinking freely and seeking the truth, making it a more profound and 'badtar' (worse) form of bondage.",
+            reference: "Manav Abhyas Darshan, Page 118"
+        },
+        {
+            hindi: "कर्म का फल कर्ता के ज्ञान के स्तर पर निर्भर करता है।",
+            english: "The fruit of an action depends on the knowledge-level of the doer.",
+            interpretation: "The same physical action can produce vastly different results. The 'phal' or result of a 'karma' is determined not by the action itself, but by the 'gyan ke star'—the level of understanding—of the person performing it. An action from a place of clarity brings harmony; the same action from delusion brings entanglement.",
+            reference: "Manav Karma Darshan, Page 8"
+        },
+        {
+            hindi: "अस्तित्व में हर कोई सीखने की प्रक्रिया में है।",
+            english: "In existence, everyone is in a process of learning.",
+            interpretation: "This provides a compassionate perspective on human behavior. Whether they are aware of it or not, every 'Jeevan' or conscious unit is on a journey of 'sikhne ki prakriya' or learning, moving from delusion towards awakening. This allows us to see others' mistakes not as malice, but as part of their learning process.",
+            reference: "Manav Anubhav Darshan, Page 58"
+        },
+        {
+            hindi: "शब्दों से परे जो सत्य है, उसे अनुभव से ही जाना जा सकता है।",
+            english: "The truth that is beyond words can only be known through experience.",
+            interpretation: "Words are pointers, symbols. The reality they point to ('shabdon se pare jo satya hai') is beyond their grasp. This ultimate truth cannot be captured in scriptures or lectures; it can only be known directly through 'anubhav' or personal, experiential realization.",
+            reference: "Manav Vyavahar Darshan, Page 72"
+        },
+        {
+            hindi: "असंतोष, यथार्थ और अपेक्षा के बीच का अंतर है।",
+            english: "Dissatisfaction is the gap between reality and expectation.",
+            interpretation: "The feeling of 'asantosh' or dissatisfaction is a precise indicator of a mental state. It is the measurement of the 'antar' or gap between 'yatharth' (reality as it is) and our 'apeksha' (what we expect or desire it to be). To eliminate dissatisfaction, one must close this gap by aligning expectations with reality.",
+            reference: "Manav Abhyas Darshan, Page 106"
+        },
+        {
+            hindi: "प्रकृति के साथ जीना, विज्ञान और विवेक का संतुलन है।",
+            english: "Living with nature is a balance of science and discernment.",
+            interpretation: "A harmonious relationship with nature requires two things: 'vigyan' (science) to understand its physical laws and processes, and 'vivek' (discernment or wisdom) to understand our ethical role within it. Science without wisdom leads to exploitation; wisdom without science can be ineffective. Both are needed.",
+            reference: "Manav Karma Darshan, Page 45"
+        },
+        {
+            hindi: "ज्ञान आनंद का स्रोत है, अहंकार का नहीं।",
+            english: "Knowledge is the source of bliss, not of ego.",
+            interpretation: "When the acquisition of knowledge leads to 'ahankar' or ego, it is a sign that the knowledge is incomplete or has been misunderstood. True 'gyan', which is the understanding of reality, naturally leads to humility and 'anand' or bliss, as one sees one's small but integral place in the vast existence.",
+            reference: "Manav Anubhav Darshan, Page 63"
+        },
+        {
+            hindi: "भरोसा, संबंधों की सांस है।",
+            english: "Trust is the breath of relationships.",
+            interpretation: "Just as a living being cannot survive without breath, a relationship cannot survive without 'bharosa' or trust. When trust is broken, the relationship suffocates and dies. Nurturing and maintaining trust is therefore the very life-support of any healthy human connection.",
+            reference: "Manav Vyavahar Darshan, Page 52"
+        },
+        {
+            hindi: "मानसिक स्पष्टता के बिना भौतिक समृद्धि निरर्थक है।",
+            english: "Without mental clarity, physical prosperity is meaningless.",
+            interpretation: "One can accumulate great 'bhautik samriddhi' or material wealth, but if there is no 'mansik spashtata'—no inner peace, no clarity of purpose—that wealth becomes 'nirarthak' or meaningless. It cannot provide happiness or contentment, and may even become a source of anxiety.",
+            reference: "Manav Abhyas Darshan, Page 177"
+        },
+        {
+            hindi: "हर क्रिया की समान और विपरीत प्रतिक्रिया होती है, यह नियम व्यवहार पर भी लागू होता है।",
+            english: "Every action has an equal and opposite reaction; this law applies to behavior as well.",
+            interpretation: "Newton's third law is extended here from physics to ethics. Every behavior ('vyavahar') we put out into the world creates a corresponding result. A just action creates trust and harmony; an unjust action creates distrust and conflict. We are the creators of the social and psychological environments we inhabit.",
+            reference: "Manav Karma Darshan, Page 9"
+        },
+        {
+            hindi: "अनुभव स्वयं में एक प्रमाण है, उसे किसी बाहरी प्रमाण की आवश्यकता नहीं।",
+            english: "Experience is a proof in itself; it does not require any external proof.",
+            interpretation: "When one has a direct 'anubhav' or experience of truth, it is self-validating. It does not need confirmation from others, from scriptures, or from scientific instruments. The certainty that comes from direct perception is absolute and stands on its own as 'praman' or proof.",
+            reference: "Manav Anubhav Darshan, Page 19"
+        },
+        {
+            hindi: "जो अपनी भावनाओं का दास है, वह स्वतंत्र नहीं हो सकता।",
+            english: "One who is a slave to their emotions cannot be free.",
+            interpretation: "True freedom ('swatantrata') is a state of consciousness, not just physical liberty. If a person is a 'das' or slave to their fluctuating emotions like anger, fear, and jealousy, they are not in control of themselves. Self-mastery, which begins with understanding our emotions, is the key to freedom.",
+            reference: "Manav Vyavahar Darshan, Page 90"
+        },
+        {
+            hindi: "अध्ययन का अर्थ है, अस्तित्व को पढ़ना।",
+            english: "The meaning of study is to read existence.",
+            interpretation: "This elevates the concept of 'adhyayan' or study beyond just reading books. True study is the act of directly observing and 'reading' existence ('astitva') itself—understanding its laws, its order, and its interconnectedness. The universe is the ultimate textbook.",
+            reference: "Manav Abhyas Darshan, Page 32"
+        },
+        {
+            hindi: "सृजनात्मकता, समाधानित मन की स्वाभाविक अभिव्यक्ति है।",
+            english: "Creativity is the natural expression of a resolved mind.",
+            interpretation: "Creativity ('srijanatmakta') is not a special talent given to a few. It is the 'swabhavik abhivyakti' or natural expression of a mind that is 'samadhanit'—free from internal conflict and confusion. A clear mind naturally sees new connections and solutions, leading to creative action.",
+            reference: "Manav Karma Darshan, Page 145"
+        },
+        {
+            hindi: "सत्य किसी की संपत्ति नहीं है, यह सभी के लिए उपलब्ध है।",
+            english: "Truth is not anyone's property; it is available to all.",
+            interpretation: "No person, religion, or organization can claim ownership of 'Satya' or truth. It is not a 'sampatti' or private property. It is a universal reality, equally 'uplabdh' or available to any individual who is willing to undertake the necessary investigation to see it.",
+            reference: "Manav Anubhav Darshan, Page 10"
+        },
+        {
+            hindi: "क्षमा, दूसरों के लिए नहीं, स्वयं के लिए एक उपहार है।",
+            english: "Forgiveness is a gift not for others, but for oneself.",
+            interpretation: "Holding onto resentment and anger harms us more than it harms the other person. The act of 'kshama' or forgiveness is therefore not primarily a favor to the offender; it is a 'uphaar' or gift to 'svayam' or oneself, freeing the mind from the heavy burden of the past.",
+            reference: "Manav Vyavahar Darshan, Page 115"
+        },
+        {
+            hindi: "जीवन का लक्ष्य आनंदपूर्ण सह-अस्तित्व है।",
+            english: "The goal of life is blissful co-existence.",
+            interpretation: "The ultimate 'lakshya' or goal of human life is not in accumulating wealth or seeking personal salvation. It is to achieve a state of 'anandpurna sah-astitva'—to live blissfully in the understanding and practice of co-existence with all of humanity and the rest of nature.",
+            reference: "Manav Abhyas Darshan, Page 15"
+        },
+        {
+            hindi: "व्यवस्था में भागीदारी ही कर्मयोग है।",
+            english: "Participation in the order is Karma Yoga.",
+            interpretation: "This provides a new meaning for 'Karma Yoga'. It is not just about selfless action, but about consciously participating ('bhagidari') in the 'vyavastha' or the grand, harmonious order of existence. Every action performed with this understanding becomes a form of yoga, connecting the individual to the whole.",
+            reference: "Manav Karma Darshan, Page 15"
+        },
+        {
+            hindi: "समझदारी का उदय होते ही, भय का अस्त हो जाता है।",
+            english: "As soon as understanding arises, fear sets.",
+            interpretation: "Understanding ('samajdari') and fear ('bhay') are like light and darkness. They cannot coexist in the same place at the same time. The 'uday' or rising of understanding is simultaneously the 'ast' or setting of fear. To eliminate fear, one must work to bring in the light of clarity.",
+            reference: "Manav Anubhav Darshan, Page 44"
+        },
+        {
+            hindi: "संस्कृति, समाधानित जीवनशैली का नाम है।",
+            english: "Culture is the name for a resolved lifestyle.",
+            interpretation: "True 'sanskriti' or culture is not just about art, music, and customs. At its core, it is the collective 'jeevanshaili' or lifestyle that emerges from a society of 'samadhanit' or resolved individuals. It is a way of life based on harmony, justice, and mutual fulfillment.",
+            reference: "Manav Vyavahar Darshan, Page 160"
+        },
+        {
+            hindi: "प्रश्न का उत्तर प्रश्नकर्ता के भीतर ही होता है।",
+            english: "The answer to a question lies within the questioner.",
+            interpretation: "The existence of a question implies the capacity to understand the answer. The 'uttar' or answer is not something to be imported from outside; it is to be discovered 'bheetar' or within, by clarifying one's own perception and dissolving the confusion that created the question in the first place.",
+            reference: "Manav Abhyas Darshan, Page 37"
+        },
+        {
+            hindi: "न्याय, धर्म, और सत्य - ये तीन अविभाज्य हैं।",
+            english: "Justice, Righteousness, and Truth - these three are inseparable.",
+            interpretation: "These are not separate principles but different facets of the same reality. What is True ('Satya') is the basis for Righteous Conduct ('Dharma'). Conduct based on Dharma naturally results in Justice ('Nyay'). They are an 'avibhajya' or inseparable trinity that forms the foundation of a harmonious existence.",
+            reference: "Manav Karma Darshan, Page 4"
+        },
+        {
+            hindi: "अनुभूति की तृप्ति ही परम संतोष है।",
+            english: "The fulfillment of realization is the ultimate contentment.",
+            interpretation: "The fulfillment of desires for objects or sensations is temporary. The only lasting, 'param santosh' or ultimate contentment comes from 'anubhuti ki tripti'—the fulfillment of the deepest longing of consciousness, which is to directly experience and realize the nature of reality.",
+            reference: "Manav Anubhav Darshan, Page 90"
+        },
+        {
+            hindi: "दुर्व्यवहार, स्वयं के प्रति अन्याय है।",
+            english: "Misbehavior is an injustice towards oneself.",
+            interpretation: "When we misbehave ('durvyavahar') with others, we may think we are harming them. However, the first and primary victim is ourself. Such actions reveal our own state of delusion and inner disorder, thus perpetuating our own suffering. It is an act of 'anyay' or injustice against our own potential for happiness.",
+            reference: "Manav Vyavahar Darshan, Page 85"
+        },
+        {
+            hindi: "ज्ञान का प्रकाश ही मोह का अंधकार मिटाता है।",
+            english: "Only the light of knowledge dispels the darkness of attachment.",
+            interpretation: "Attachment ('moha') is a form of 'andhkar' or darkness, where we are blindly bound to people, objects, or ideas. This darkness cannot be fought; it can only be dispelled by bringing in the 'prakash' or light of 'gyan'—the clear understanding of the true nature of things, which reveals their impermanence and our true relationship to them.",
+            reference: "Manav Abhyas Darshan, Page 125"
+        },
+        {
+            hindi: "प्रकृति के साथ सहयोग, विनाश के साथ नहीं।",
+            english: "Cooperation with nature, not conflict with it.",
+            interpretation: "This is a simple but profound guideline for human action. All our technology, economy, and social systems should be designed for 'sahyog' or cooperation with the principles and cycles of the natural world. Choosing a path of 'vinash' or conflict against nature is suicidal.",
+            reference: "Manav Karma Darshan, Page 42"
+        },
+        {
+            hindi: "जो स्वयं को जानता है, वह ब्रह्मांड को जानता है।",
+            english: "One who knows the self, knows the universe.",
+            interpretation: "The human consciousness ('Jeevan') is a microcosm that contains the principles of the entire macrocosm. By deeply understanding one's own nature—the nature of consciousness, thought, and reality—one gains the key to understanding the 'brahmand' or the cosmos itself. The journey inward reveals the outward.",
+            reference: "Manav Anubhav Darshan, Page 5"
+        },
+        {
+            hindi: "सहिष्णुता, समझ की शुरुआत है, अंत नहीं।",
+            english: "Tolerance is the beginning of understanding, not the end.",
+            interpretation: "'Sahishnuta' or tolerance is a valuable first step, where we agree not to fight over our differences. However, it is only the 'shuruat' or beginning. The ultimate goal is not just to tolerate each other, but to arrive at a shared 'samaj' or understanding where the differences that cause conflict are resolved.",
+            reference: "Manav Vyavahar Darshan, Page 112"
+        },
+        {
+            hindi: "श्रम-विहीन समृद्धि एक भ्रम है।",
+            english: "Prosperity without labor is an illusion.",
+            interpretation: "The idea of getting something for nothing, of achieving 'samriddhi' or prosperity without 'shram' or productive work, is a 'bhram' or an illusion. True, sustainable prosperity is always the result of purposeful effort, whether physical or mental. Schemes that promise wealth without effort are fundamentally flawed.",
+            reference: "Manav Karma Darshan, Page 70"
+        },
+        {
+            hindi: "बोध के क्षण में, युगों का अज्ञान धुल जाता है।",
+            english: "In the moment of realization, the ignorance of ages is washed away.",
+            interpretation: "Ignorance ('agyan') may have accumulated over countless lifetimes or 'yugas'. However, it is not a solid substance that needs to be chipped away slowly. It is like darkness. In the single 'kshan' or moment of 'bodh'—the dawning of insight and realization—the entire accumulation of darkness is instantly dispelled by light.",
+            reference: "Manav Anubhav Darshan, Page 81"
+        },
+        {
+            hindi: "मानव का मूल्यांकन उसके आचरण से होता है, उसकी घोषणाओं से नहीं।",
+            english: "A human is evaluated by their conduct, not by their declarations.",
+            interpretation: "A person's true worth and level of understanding are not determined by their 'ghoshna'—the grand statements they make, the beliefs they profess, or the titles they hold. The real 'mulyankan' or evaluation is based on their 'acharan'—their day-to-day conduct, especially in relationships and moments of challenge.",
+            reference: "Manav Vyavahar Darshan, Page 82"
+        },
+        {
+            hindi: "व्यवस्था को समझना और उसमें जीना ही धर्म है।",
+            english: "To understand the order and to live in it is Dharma.",
+            interpretation: "This provides a functional definition of 'Dharma'. It is a two-step process: first, to understand the 'vyavastha'—the inherent, harmonious order in existence. Second, to live one's life in accordance with that understanding. This alignment of knowledge and action is the essence of righteous living.",
+            reference: "Manav Karma Darshan, Page 3"
+        },
+        {
+            hindi: "अनुभव तर्क से परे है, पर तर्क के विरुद्ध नहीं।",
+            english: "Experience is beyond logic, but not against logic.",
+            interpretation: "The ultimate 'anubhav' or experience of reality transcends the step-by-step process of 'tark' or logic. However, it is not illogical or irrational. A true experience will never contradict the fundamental principles of reason. It is 'tark ke viruddh nahi' (not against logic), but it encompasses a reality that is more whole and integrated than logic can describe.",
+            reference: "Manav Anubhav Darshan, Page 20"
+        },
+        {
+            hindi: "जीवन का संगीत संबंधों के सामंजस्य से बनता है।",
+            english: "The music of life is composed of the harmony of relationships.",
+            interpretation: "A beautiful life is compared to 'sangeet' or music. The melody and harmony of this music are not created in isolation. They are created in the 'samanjasya' or harmony of our 'sambandh' or relationships. Each relationship is a note, and when they are all in tune, the result is a beautiful life.",
+            reference: "Manav Vyavahar Darshan, Page 46"
+        },
+        {
+            hindi: "अतीत एक स्मृति है, भविष्य एक कल्पना, सत्य केवल वर्तमान है।",
+            english: "The past is a memory, the future is an imagination, the truth is only the present.",
+            interpretation: "This is a fundamental principle for right living. The 'ateet' (past) exists only as 'smriti' (memory traces) in the mind. The 'bhavishya' (future) exists only as 'kalpana' (imagination). The only 'satya' (reality) is the 'vartaman' (the present moment). To be grounded in reality means to be grounded in the now.",
+            reference: "Manav Abhyas Darshan, Page 110"
+        },
+        {
+            hindi: "परिश्रम, प्रकृति और मानव के बीच का सेतु है।",
+            english: "Labor is the bridge between nature and humanity.",
+            interpretation: "Through 'parishram' or labor, humanity interacts with the natural world, transforming its resources to meet our needs. This act of working with nature is the 'setu' or bridge that connects us. When this labor is performed with understanding and respect, the bridge is strong and beneficial for both sides.",
+            reference: "Manav Karma Darshan, Page 69"
+        },
+        {
+            hindi: "समाधानित व्यक्ति का मौन भी वाचाल होता है।",
+            english: "The silence of a resolved person is also eloquent.",
+            interpretation: "A person who is 'samadhanit' or resolved does not need many words. Their very presence, their calm demeanor, their 'maun' or silence, communicates more than a thousand words from a confused person. Their silence is 'vachal' or eloquent with peace and clarity.",
+            reference: "Manav Anubhav Darshan, Page 104"
+        },
+        {
+            hindi: "स्वार्थ, संबंध में दीमक की तरह है।",
+            english: "Selfishness is like a termite in a relationship.",
+            interpretation: "'Svarth' or selfishness may not be visible on the surface, but like a 'deemak' or termite, it silently eats away at the foundation of a 'sambandh' or relationship. It destroys trust and mutuality from the inside until the entire structure collapses.",
+            reference: "Manav Vyavahar Darshan, Page 58"
+        },
+        {
+            hindi: "अज्ञानता में किया गया पुण्य भी पाप का कारण बन सकता है।",
+            english: "A good deed done in ignorance can also become the cause of sin.",
+            interpretation: "Intentions are not enough. An action ('punya') that is intended to be good, if performed with 'agyanta' or ignorance of the full context and consequences, can inadvertently lead to harmful results ('paap'). This highlights the supreme importance of clarity and understanding before acting.",
+            reference: "Manav Karma Darshan, Page 10"
+        },
+        {
+            hindi: "जागृति के लिए प्यास, पहला कदम है।",
+            english: "The thirst for awakening is the first step.",
+            interpretation: "The journey towards 'jagruti' or awakening does not begin with study or practice. It begins with an intense inner 'pyaas' or thirst—a deep dissatisfaction with the state of delusion and a powerful longing for truth. This motivation is the 'pehla kadam' or first and most essential step.",
+            reference: "Manav Abhyas Darshan, Page 21"
+        },
+        {
+            hindi: "सत्य एक है, अभिव्यक्तियाँ अनेक।",
+            english: "Truth is one, expressions are many.",
+            interpretation: "The ultimate reality ('Satya') is singular and universal. However, the ways it can be expressed ('abhivyaktiyan')—through different languages, philosophies, arts, and lives—are manifold. The wise person sees the one truth behind the many expressions, while the deluded person gets stuck on the differences in expression.",
+            reference: "Manav Anubhav Darshan, Page 12"
+        },
+        {
+            hindi: "जीवन का मूल्यांकन धन से नहीं, समाधान से होता है।",
+            english: "The evaluation of a life is not by wealth, but by resolution.",
+            interpretation: "Society often measures the success of a life by 'dhan' or wealth. However, the true 'mulyankan' or evaluation of a human life is by 'samadhan'—the degree to which the person has resolved their inner questions and conflicts and lives in a state of clarity and peace.",
+            reference: "Manav Vyavahar Darshan, Page 178"
+        },
+        {
+            hindi: "क्रोध, स्वयं के अज्ञान पर की गई टिप्पणी है।",
+            english: "Anger is a commentary on one's own ignorance.",
+            interpretation: "When we get angry, we think we are reacting to an external event. In reality, anger ('krodh') is an unconscious 'tippani' or commentary on our own 'agyan' or ignorance. It is an admission that we lack the understanding to handle the situation peacefully and intelligently.",
+            reference: "Manav Karma Darshan, Page 113"
+        },
+        {
+            hindi: "समझदारी, स्वतंत्रता की जननी है।",
+            english: "Understanding is the mother of freedom.",
+            interpretation: "Freedom ('swatantrata') is not a gift or a political status; it is born from something. Its 'janani' or mother is 'samajdari'—right understanding. When we understand ourselves, others, and the laws of existence, we are naturally freed from the bondage of fear, anger, and delusion.",
+            reference: "Manav Abhyas Darshan, Page 119"
+        },
+        {
+            hindi: "परम सत्य, सह-अस्तित्व के रूप में प्रत्यक्ष है।",
+            english: "The ultimate truth is evident in the form of co-existence.",
+            interpretation: "The 'param satya' or ultimate truth is not hidden in some other dimension. It is 'pratyaksh' or directly perceptible right here and now, in the form of 'Sah-astitva'. The reality that everything exists in relationship with everything else is the highest spiritual truth, available for anyone to see.",
+            reference: "Manav Anubhav Darshan, Page 7"
+        },
+        // Appending 500 new quotes
+        {
+            hindi: "अस्तित्व में हर इकाई पूरक, उपयोगी और प्रयोजनशील है।",
+            english: "In existence, every unit is complementary, useful, and purposeful.",
+            interpretation: "This statement counters any nihilistic view of existence. It asserts that every single entity, no matter how small, has a threefold quality: it complements the whole, it has a utility, and it serves a purpose. Understanding this intrinsic value in everything leads to a respectful and harmonious interaction with the world.",
+            reference: "Manav Karma Darshan, Page 25"
+        },
+        {
+            hindi: "मानसिकता में समाधान ही भौतिकता में समृद्धि का आधार है।",
+            english: "Resolution in the mentality is the basis for prosperity in the material world.",
+            interpretation: "This establishes a clear causal link between our inner and outer worlds. True, sustainable material prosperity ('bhautik samriddhi') is not just a matter of external effort. Its foundation ('aadhar') is 'mansik samadhan'—an internal state of clarity, contentment, and resolution. A confused mind cannot create a prosperous and orderly life.",
+            reference: "Manav Abhyas Darshan, Page 178"
+        },
+        {
+            hindi: "ज्ञान, क्रिया-पूर्णता और आचरण-पूर्णता में प्रमाणित होता है।",
+            english: "Knowledge is proven in the perfection of action and the perfection of conduct.",
+            interpretation: "The claim to have 'gyan' or knowledge is meaningless if it doesn't manifest in one's life. The ultimate proof ('praman') of knowledge lies in two things: 'kriya-purnata' (perfection and skill in one's work) and 'acharan-purnata' (perfection and humaneness in one's conduct). Knowledge must translate into being and doing.",
+            reference: "Manav Anubhav Darshan, Page 155"
+        },
+        {
+            hindi: "संबंधों की स्वीकृति ही न्याय की शुरुआत है।",
+            english: "The acceptance of relationships is the beginning of justice.",
+            interpretation: "Justice ('nyay') is not an abstract legal concept; it begins with a very personal step: the 'svikriti' or acceptance of our relationships and the responsibilities they entail. When we acknowledge our connection to another person, we naturally begin to act in a way that ensures mutual fulfillment, which is the essence of justice.",
+            reference: "Manav Vyavahar Darshan, Page 62"
+        },
+        {
+            hindi: "प्रकृति एक संतुलित व्यवस्था है, मानव को इसका सम्मान करना सीखना होगा।",
+            english: "Nature is a balanced order; humans must learn to respect it.",
+            interpretation: "Nature is not a random collection of resources to be exploited. It is a 'santulit vyavastha'—a self-regulating, balanced system. The current ecological crisis stems from humanity's failure to respect this order. The path forward requires learning and aligning with nature's inherent wisdom.",
+            reference: "Manav Karma Darshan, Page 38"
+        },
+        {
+            hindi: "सत्य को थोपा नहीं जा सकता, केवल उजागर किया जा सकता है।",
+            english: "Truth cannot be imposed, it can only be revealed.",
+            interpretation: "Any attempt to force ('thopna') a belief or truth onto another person is an act of violence and is bound to fail. The 'Satya' or truth can only be 'ujagar' or revealed, presented in such a way that the other person can see it for themselves. The role of a teacher is not to indoctrinate, but to facilitate discovery.",
+            reference: "Manav Abhyas Darshan, Page 25"
+        },
+        {
+            hindi: "अस्तित्व में सब कुछ पारदर्शी है, भ्रम केवल मानव में है।",
+            english: "In existence, everything is transparent; delusion is only in the human.",
+            interpretation: "Reality itself ('astitva') is 'pardarshi' or transparent; it hides nothing. The laws and processes of nature are open to be understood. The only opacity, the only 'bhram' or delusion, exists within the human mind, which projects its own confusion onto the world. The work is to clean our own window of perception.",
+            reference: "Manav Anubhav Darshan, Page 13"
+        },
+        {
+            hindi: "सुख बाहर से नहीं, भीतर की स्पष्टता से आता है।",
+            english: "Happiness comes not from the outside, but from inner clarity.",
+            interpretation: "The search for happiness ('sukh') in external objects, people, or achievements is fundamentally misguided. This quote asserts that lasting happiness is a direct result of 'bheetar ki spashtata'—an inner clarity where all contradictions, doubts, and questions have been resolved.",
+            reference: "Manav Vyavahar Darshan, Page 144"
+        },
+        {
+            hindi: "श्रम से उत्पादन, विनिमय से समृद्धि।",
+            english: "Production from labor, prosperity from exchange.",
+            interpretation: "This outlines a basic principle of a healthy economy. 'Shram' (labor) leads to 'utpadan' (production of goods and services). However, production alone is not enough. 'Samriddhi' (prosperity) is achieved through 'vinimay'—the just and equitable exchange of this produce, ensuring that everyone's needs are met.",
+            reference: "Manav Karma Darshan, Page 74"
+        },
+        {
+            hindi: "पूर्णता की अभिव्यक्ति ही कला है।",
+            english: "The expression of completeness is art.",
+            interpretation: "True art ('kala') is not just about aesthetics or technical skill. It is the 'abhivyakti' or expression of 'purnata'—a state of inner wholeness and resolution. An artist who has touched this state of completeness creates work that resonates with harmony, balance, and a deeper truth.",
+            reference: "Manav Abhyas Darshan, Page 156"
+        },
+        {
+            hindi: "भयभीत व्यक्ति न तो न्याय कर सकता है, न ही स्वीकार सकता है।",
+            english: "A fearful person can neither do justice, nor accept it.",
+            interpretation: "Fear ('bhay') is a major obstacle to ethical conduct. A fearful mind is preoccupied with self-preservation and cannot evaluate situations objectively. Therefore, it is incapable of 'doing' justice. Furthermore, it cannot even 'accept' or recognize justice when it is presented, as it sees everything through the filter of its own insecurity.",
+            reference: "Manav Vyavahar Darshan, Page 89"
+        },
+        {
+            hindi: "अस्तित्व में हर पल उत्सव है, यदि हम उपस्थित हों।",
+            english: "In existence, every moment is a celebration, if we are present.",
+            interpretation: "The idea of 'utsav' or celebration is not limited to special occasions. The unfolding of existence itself is a continuous celebration of life and order. The reason we miss it is because we are not 'upasthit' or present. Our minds are lost in the past or the future. To be fully present is to join the eternal celebration.",
+            reference: "Manav Anubhav Darshan, Page 122"
+        },
+        {
+            hindi: "शिक्षा का फल विवेक है।",
+            english: "The fruit of education is discernment.",
+            interpretation: "The ultimate outcome or 'phal' of true education is not a degree or a collection of facts. It is 'vivek'—the faculty of discernment, the ability to distinguish between the real and the unreal, the right and the wrong, the purposeful and the futile. This inner wisdom is the real measure of being educated.",
+            reference: "Manav Abhyas Darshan, Page 190"
+        },
+        {
+            hindi: "शरीर यात्रा का साधन है, साध्य नहीं।",
+            english: "The body is the means of the journey, not the destination.",
+            interpretation: "This quote clarifies the role of the physical body. It is a 'sadhan' or a vehicle for the journey of consciousness ('Jeevan'). The 'sadhya' or destination is awakening and resolution. To be overly identified with the body and its sensations is to mistake the car for the destination of the journey.",
+            reference: "Manav Karma Darshan, Page 50"
+        },
+        {
+            hindi: "न्याय की प्यास, मानवीयता का प्रमाण है।",
+            english: "The thirst for justice is the proof of humanity.",
+            interpretation: "What distinguishes a human being is not just intelligence, but an innate 'pyaas' or thirst for 'nyay' or justice. This deep-seated longing for fairness in relationships is a fundamental 'praman' or proof of our inherent humane nature, even when our actions fall short.",
+            reference: "Manav Vyavahar Darshan, Page 64"
+        },
+        {
+            hindi: "समझदारी के बिना जानकारी बोझ है।",
+            english: "Without understanding, information is a burden.",
+            interpretation: "In the information age, it is easy to accumulate vast amounts of 'jankari' or information. However, without 'samajdari'—the understanding that integrates this information into a coherent worldview—it becomes a 'bojh' or a burden, leading to confusion, anxiety, and intellectual arrogance.",
+            reference: "Manav Abhyas Darshan, Page 192"
+        },
+        {
+            hindi: "अनुभव में द्वैत नहीं, केवल एकत्व है।",
+            english: "In experience, there is no duality, only oneness.",
+            interpretation: "The ordinary mind operates in 'dvait' or duality (self vs. other, subject vs. object). The ultimate 'anubhav' or experiential realization of truth transcends this duality. In that state, there is only 'ekatva' or oneness—the direct perception of the interconnected, unified reality of co-existence.",
+            reference: "Manav Anubhav Darshan, Page 98"
+        },
+        {
+            hindi: "प्रकृति के चक्रों के साथ सामंजस्य ही स्वास्थ्य का रहस्य है।",
+            english: "Harmony with the cycles of nature is the secret of health.",
+            interpretation: "Health ('swasthya') is not maintained by fighting nature, but by aligning with it. The 'rahasya' or secret lies in establishing 'samanjasya' or harmony with the 'chakras' or cycles of nature—the daily, monthly, and seasonal rhythms. Living out of sync with these cycles inevitably creates disease.",
+            reference: "Manav Karma Darshan, Page 39"
+        },
+        {
+            hindi: "विश्वास, देखे हुए पर होता है; आस्था, बिना देखे पर।",
+            english: "Trust is in what has been seen; faith is in what has not been seen.",
+            interpretation: "This distinguishes between 'vishwas' (trust) and 'aastha' (faith/belief). Trust is rational; it is based on the evidence of one's own observation and experience of another's conduct. Faith, on the other hand, is an acceptance of something without direct evidence. The goal is to move from faith to trust by experiencing the truth for oneself.",
+            reference: "Manav Vyavahar Darshan, Page 55"
+        },
+        {
+            hindi: "अस्तित्व में कोई भी घटना कारण-रहित नहीं है।",
+            english: "In existence, no event is without a cause.",
+            interpretation: "This is a statement of the universal law of cause and effect. Nothing happens randomly or by chance. Every 'ghatna' or event has a 'karan' or a cause, and is part of a seamless chain of causality. To understand any situation, one must look for its underlying causes.",
+            reference: "Manav Abhyas Darshan, Page 49"
+        },
+        {
+            hindi: "समाधानित मन ही शांत मन है।",
+            english: "A resolved mind is a peaceful mind.",
+            interpretation: "Peace of mind ('shant man') is not achieved through relaxation techniques or by avoiding problems. It is the natural state of a 'samadhanit man'—a mind that has resolved its fundamental questions and contradictions. Peace is a consequence of clarity, not an effort.",
+            reference: "Manav Anubhav Darshan, Page 79"
+        },
+        {
+            hindi: "मानव का गौरव उसकी कल्पनाशीलता नहीं, बल्कि उसकी समझदारी है।",
+            english: "The glory of a human is not their imagination, but their understanding.",
+            interpretation: "While imagination ('kalpanashilta') is a powerful human faculty, it can lead to both heaven and hell. The true 'gaurav' or glory of a human being lies in their 'samajdari'—the understanding that correctly channels this imagination towards reality, purpose, and harmonious living.",
+            reference: "Manav Vyavahar Darshan, Page 95"
+        },
+        {
+            hindi: "उत्पादन का उद्देश्य उपयोग है, उपभोग नहीं।",
+            english: "The purpose of production is utility, not consumption.",
+            interpretation: "This draws a fine line between two motivations. 'Upyog' (utility) means producing things to fulfill definite needs. 'Upbhog' (consumption) refers to the endless indulgence of sensory desires. A wise economy is based on production for utility, which leads to sufficiency, while an economy based on consumption leads to over-exploitation and dissatisfaction.",
+            reference: "Manav Karma Darshan, Page 77"
+        },
+        {
+            hindi: "ज्ञान बांटा जाता है, चुराया नहीं जा सकता।",
+            english: "Knowledge is shared, it cannot be stolen.",
+            interpretation: "Unlike material property, 'gyan' or knowledge has a unique quality. It cannot be diminished by sharing; in fact, it often grows. One cannot 'steal' understanding from another. It must be gained through one's own effort of learning. This encourages a culture of open sharing rather than hoarding of knowledge.",
+            reference: "Manav Abhyas Darshan, Page 195"
+        },
+        {
+            hindi: "अनुभव के बाद, जीना ही प्रमाण है।",
+            english: "After experience, living itself is the proof.",
+            interpretation: "Once a person has had the 'anubhav' or direct experience of truth, they do not need to offer verbal arguments or proofs. Their very way of 'jeena'—their conduct, their peace, their fearlessness—becomes the living 'praman' or proof of their realization. Their life becomes the message.",
+            reference: "Manav Anubhav Darshan, Page 156"
+        },
+        {
+            hindi: "स्वार्थ संबंधों को व्यापार बना देता है।",
+            english: "Selfishness turns relationships into transactions.",
+            interpretation: "When 'svarth' or selfishness enters a relationship, it ceases to be a space of mutual trust and affection. It becomes a 'vyapar' or a business transaction, where each person is calculating their own profit and loss. This transactional mindset is the death of genuine human connection.",
+            reference: "Manav Vyavahar Darshan, Page 59"
+        },
+        {
+            hindi: "प्रकृति में हर चीज़ का अपना समय होता है।",
+            english: "In nature, everything has its own time.",
+            interpretation: "Nature operates according to its own rhythms and timetables. A seed sprouts, grows, fruits, and decays in its own time. Human impatience and attempts to force processes against their natural timing lead to imbalance and failure. Wisdom lies in understanding and aligning with these natural timings.",
+            reference: "Manav Karma Darshan, Page 44"
+        },
+        {
+            hindi: "स्पष्टता के बिना प्रेम, मोह है।",
+            english: "Without clarity, love is attachment.",
+            interpretation: "This distinguishes true love from its common imitation. 'Moha' or attachment is a possessive, conditional, and often painful emotion born from misunderstanding. True 'prem' or love is only possible with 'spashtata' or clarity—the clear understanding of oneself and the other, leading to unconditional acceptance.",
+            reference: "Manav Abhyas Darshan, Page 126"
+        },
+        {
+            hindi: "जागृत व्यक्ति का हर क्षण एक नया जन्म है।",
+            english: "For an awakened person, every moment is a new birth.",
+            interpretation: "An awakened ('jagrut') individual is not burdened by the past. They are fully present in the now. Therefore, every 'kshan' or moment is fresh, new, and free from the residue of previous experiences. It is like a continuous 'naya janma' or rebirth, full of potential and free from psychological baggage.",
+            reference: "Manav Anubhav Darshan, Page 125"
+        },
+        {
+            hindi: "न्याय देना और पाना, दोनों के लिए समझदारी आवश्यक है।",
+            english: "To give and to receive justice, understanding is necessary for both.",
+            interpretation: "The act of justice is a two-way street. The person 'giving' justice needs the 'samajdari' or understanding to correctly evaluate the situation. The person 'receiving' it also needs understanding to recognize that what is being done is fair, and to accept it without resentment, even if it is not what they desired.",
+            reference: "Manav Vyavahar Darshan, Page 66"
+        },
+        {
+            hindi: "श्रम, शरीर और जीवन के बीच का संवाद है।",
+            english: "Labor is the dialogue between the body and life (consciousness).",
+            interpretation: "Labor ('shram') is not just a physical activity. It is a 'samvad' or a dialogue. Through labor, the 'Jeevan' (consciousness) expresses its purposes, and the 'sharir' (body) acts as the instrument in the material world. It is the process through which intention becomes reality.",
+            reference: "Manav Karma Darshan, Page 68"
+        },
+        {
+            hindi: "सत्य सरल होता है, जटिलता मन की उपज है।",
+            english: "Truth is simple; complexity is a product of the mind.",
+            interpretation: "The fundamental reality ('Satya') is inherently 'saral' or simple. The 'jatilta' or complexity we perceive is not in reality itself, but is an 'upaj' or creation of our own minds. The deluded mind creates layers of concepts, beliefs, and contradictions that obscure the simple truth of co-existence.",
+            reference: "Manav Abhyas Darshan, Page 40"
+        },
+        {
+            hindi: "अनुभव के पहले सब कुछ परोक्ष है, अनुभव में ही प्रत्यक्ष।",
+            english: "Before experience, everything is indirect; only in experience is it direct.",
+            interpretation: "Knowledge gained from books or teachers is 'paroksh' or indirect. It is second-hand. The only 'pratyaksh' or direct and immediate knowing comes through 'anubhav'—one's own experiential realization. The goal of all study is to transform indirect knowledge into direct perception.",
+            reference: "Manav Anubhav Darshan, Page 18"
+        },
+        {
+            hindi: "भावनात्मक स्थिरता, मानसिक स्वास्थ्य का लक्षण है।",
+            english: "Emotional stability is a sign of mental health.",
+            interpretation: "Mental health ('mansik swasthya') is not the absence of emotions, but 'bhavnatmak sthirta'—emotional stability. It is the ability to not be swept away by passing moods of anger, fear, or excitement. This stability is a natural 'lakshan' or sign of a mind that is grounded in understanding.",
+            reference: "Manav Vyavahar Darshan, Page 91"
+        },
+        {
+            hindi: "प्रकृति के साथ जीना ही सच्ची प्रगति है।",
+            english: "Living with nature is true progress.",
+            interpretation: "Human society often defines 'pragati' or progress in terms of technological complexity or economic growth. This quote redefines it. True progress is about learning to live in harmony 'with' nature, not conquering it. A sustainable, just, and happy society is the real measure of progress.",
+            reference: "Manav Karma Darshan, Page 46"
+        },
+        {
+            hindi: "प्रश्न का अंत ही समाधान है।",
+            english: "The end of the question is the solution.",
+            interpretation: "The state of 'samadhan' or resolution is not about finding one more answer. It is the state where the question itself dissolves. When understanding is complete, the very basis for the question ('prashn') disappears, leading to a state of profound inner silence and clarity.",
+            reference: "Manav Abhyas Darshan, Page 38"
+        },
+        {
+            hindi: "साक्ष्य, अनुभव की छाया है।",
+            english: "Evidence is the shadow of experience.",
+            interpretation: "'Sakshya' or evidence, proof, and logic are like a 'chhaya' or shadow. They point towards something real but are not the thing itself. The real substance is 'anubhav' or direct experience. The shadow is useful for locating the object, but one must not mistake it for the object.",
+            reference: "Manav Anubhav Darshan, Page 105"
+        },
+        {
+            hindi: "अहंकार, सीखने में सबसे बड़ी बाधा है।",
+            english: "Ego is the biggest obstacle in learning.",
+            interpretation: "A person with 'ahankar' or ego believes they already know. This attitude creates the 'sabse badi badha' or biggest obstacle to true 'sikhna' or learning, which requires humility and the openness to admit one's own ignorance. To learn, the cup of the ego must first be emptied.",
+            reference: "Manav Vyavahar Darshan, Page 71"
+        },
+        {
+            hindi: "न्यायपूर्ण व्यवस्था में भय के लिए कोई स्थान नहीं।",
+            english: "In a just system, there is no place for fear.",
+            interpretation: "A 'nyaypurna vyavastha'—a system based on justice, from the family to the global order—creates an environment of trust and mutual fulfillment. In such a system, 'bhay' or fear has no 'sthan' or place, as everyone feels secure in the knowledge that their rights will be protected and their needs will be considered.",
+            reference: "Manav Karma Darshan, Page 128"
+        },
+        {
+            hindi: "सत्य को जानना नहीं, सत्य में जीना होता है।",
+            english: "It is not about knowing the truth, but living in the truth.",
+            interpretation: "The goal is not to accumulate 'knowing' the truth as a piece of intellectual information. The real transformation happens when one begins 'jeena' or living 'in' the truth. It is the integration of understanding into one's being, where every action and perception is aligned with reality.",
+            reference: "Manav Abhyas Darshan, Page 18"
+        },
+        {
+            hindi: "अनुभव ही परम गुरु है।",
+            english: "Experience is the ultimate teacher.",
+            interpretation: "External teachers ('gurus') can point the way, and scriptures can provide a map, but the 'param guru' or ultimate teacher is one's own 'anubhav'—direct, personal experience. It is only through this inner teacher that the final, undeniable understanding is achieved.",
+            reference: "Manav Anubhav Darshan, Page 150"
+        },
+        {
+            hindi: "अव्यवस्था का कारण, व्यवस्था का अज्ञान है।",
+            english: "The cause of disorder is the ignorance of order.",
+            interpretation: "Disorder ('avyavastha'), whether in an individual's life or in society, is not a positive force in itself. It is simply a symptom. The root 'karan' or cause is always 'agyan'—ignorance of the inherent 'vyavastha' or order that is fundamental to existence. To solve disorder, one must study order.",
+            reference: "Manav Vyavahar Darshan, Page 131"
+        },
+        {
+            hindi: "श्रम, समाधान पूर्वक, उत्सव बन जाता है।",
+            english: "Labor, done with resolution, becomes a celebration.",
+            interpretation: "For a deluded person, labor can feel like a burden or toil. However, when 'shram' or work is performed with 'samadhan'—with inner clarity and purpose—the act of working itself becomes an 'utsav' or a celebration of creativity and participation in the larger order.",
+            reference: "Manav Karma Darshan, Page 73"
+        },
+        {
+            hindi: "ज्ञान की प्यास, आत्मा का भोजन है।",
+            english: "The thirst for knowledge is the food of the soul.",
+            interpretation: "Just as the body needs food, the 'atma' or the conscious self (Jeevan) has its own need for nourishment. This nourishment is the 'pyaas' for 'gyan'—the innate thirst for understanding and truth. To seek knowledge is to feed the very core of our being.",
+            reference: "Manav Abhyas Darshan, Page 20"
+        },
+        {
+            hindi: "अनुभव में, ज्ञाता, ज्ञेय और ज्ञान एक हो जाते हैं।",
+            english: "In experience, the knower, the known, and the knowledge become one.",
+            interpretation: "In the ordinary state of knowing, there is a separation between the 'gyata' (the knower, the self), the 'gyeya' (the known, the object), and 'gyan' (the process of knowing). In the ultimate 'anubhav', this trinity merges. The self directly perceives reality without separation, in a state of complete unity.",
+            reference: "Manav Anubhav Darshan, Page 99"
+        },
+        {
+            hindi: "हर संबंध एक जिम्मेदारी है, एक अवसर।",
+            english: "Every relationship is a responsibility, an opportunity.",
+            interpretation: "A relationship is not just for personal gain or enjoyment. It comes with a 'zimmedari' or responsibility to ensure mutual fulfillment. At the same time, every relationship is an 'avasar' or an opportunity for self-reflection, for learning, and for practicing humane conduct.",
+            reference: "Manav Vyavahar Darshan, Page 50"
+        },
+        {
+            hindi: "भौतिक समृद्धि, मानवीयता के बिना, पशुता है।",
+            english: "Material prosperity, without humanity, is animalism.",
+            interpretation: "A society can be technologically advanced and materially rich ('bhautik samriddhi'). But if it lacks 'manaviyata'—justice, compassion, and mutual respect—then its state is no better than 'pashuta' or animalism, where the principle of 'might is right' prevails. True wealth is humane culture.",
+            reference: "Manav Karma Darshan, Page 178"
+        },
+        {
+            hindi: "सत्य का कोई विकल्प नहीं है।",
+            english: "There is no alternative to truth.",
+            interpretation: "We can create many illusions, beliefs, and ideologies as substitutes for reality. However, these are all temporary and ultimately lead to suffering. 'Satya' or truth is the only ground of being. In the end, there is no 'vikalp' or alternative; we must all eventually align with reality.",
+            reference: "Manav Abhyas Darshan, Page 17"
+        },
+        {
+            hindi: "जागृति, जीवन की स्वाभाविक मंजिल है।",
+            english: "Awakening is the natural destination of life.",
+            interpretation: "'Jagruti' or awakening is not an extraordinary or supernatural achievement. It is the 'swabhavik manzil'—the natural, inherent destination—of the evolution of consciousness ('Jeevan'). Every life, through its experiences, is consciously or unconsciously on a journey toward this state of completeness.",
+            reference: "Manav Anubhav Darshan, Page 60"
+        },
+        {
+            hindi: "अन्याय, संबंधों में दरार है।",
+            english: "Injustice is a crack in relationships.",
+            interpretation: "A relationship is built on a foundation of trust. Every act of 'anyay' or injustice, no matter how small, is like a 'darar' or a crack in that foundation. If these cracks are not repaired with understanding and just behavior, they will widen over time and cause the entire relationship to crumble.",
+            reference: "Manav Vyavahar Darshan, Page 86"
+        },
+        {
+            hindi: "संतुलन ही प्रकृति का सौंदर्य है।",
+            english: "Balance itself is the beauty of nature.",
+            interpretation: "The 'saundarya' or beauty we perceive in a forest, a mountain range, or an ecosystem is not random. It is the direct expression of 'santulan'—a complex and dynamic balance between all its constituent parts. Beauty is the sensory perception of underlying order and harmony.",
+            reference: "Manav Karma Darshan, Page 41"
+        },
+        {
+            hindi: "मान्यताएं अतीत की जेल हैं।",
+            english: "Beliefs are the prison of the past.",
+            interpretation: "Our 'manyatayen' or beliefs are formed based on past conditioning and experiences. When we hold onto them rigidly, they become a 'jel' or a prison, preventing us from seeing the present reality as it is. True intelligence lies in constantly re-evaluating our beliefs in the light of new evidence and experience.",
+            reference: "Manav Abhyas Darshan, Page 114"
+        },
+        {
+            hindi: "अनुभव के सूर्योदय में, संदेह के बादल छंट जाते हैं।",
+            english: "In the sunrise of experience, the clouds of doubt disperse.",
+            interpretation: "Doubt ('sandeh') is like 'badal' or clouds that obscure the clarity of the sky. These clouds cannot be fought with. They are automatically 'chhant jate hain' or dispersed by the 'suryoday' or sunrise of 'anubhav'—the dawning of direct, experiential knowledge, which illuminates the entire landscape of reality.",
+            reference: "Manav Anubhav Darshan, Page 45"
+        },
+        {
+            hindi: "व्यवहार, विचारों का फल है।",
+            english: "Behavior is the fruit of thoughts.",
+            interpretation: "Just as a tree is known by its fruit, a person's inner state is known by their behavior. Our 'vyavahar' or behavior is the 'phal' or fruit that grows from the tree of our 'vichar' or thoughts. To change the fruit, one must work on the roots and the trunk of the tree—the thinking process itself.",
+            reference: "Manav Vyavahar Darshan, Page 81"
+        },
+        {
+            hindi: "जीवन का सदुपयोग, सह-अस्तित्व को प्रमाणित करने में है।",
+            english: "The right use of life is in proving co-existence.",
+            interpretation: "The 'sadupayog' or highest and best use of a human life is not in accumulating wealth or seeking personal salvation. It is in 'pramanit karna'—demonstrating, through one's own living, the reality and the bliss of 'Sah-astitva' or co-existence, thereby creating a model for others to see.",
+            reference: "Manav Karma Darshan, Page 180"
+        },
+        {
+            hindi: "अपेक्षा, दुःख का निमंत्रण पत्र है।",
+            english: "Expectation is the invitation letter for suffering.",
+            interpretation: "When we create a rigid 'apeksha' or expectation in our mind about how others should behave or how events should unfold, we are essentially sending out a 'nimantran patra' or an invitation letter to 'dukh' or suffering. Reality rarely conforms perfectly to our expectations, so disappointment is almost guaranteed.",
+            reference: "Manav Abhyas Darshan, Page 107"
+        },
+        {
+            hindi: "अनुभव के बाद, कर्तव्य ही सहज कर्म बन जाता है।",
+            english: "After experience, duty becomes natural action.",
+            interpretation: "Before realization, fulfilling one's 'kartavya' or duty can feel like an effort or a burden. However, after the 'anubhav' of truth, one's perception is aligned with reality. In this state, fulfilling one's role in the larger order is no longer a forced duty, but a 'sahaj karma'—a spontaneous and natural action, like a river flowing to the sea.",
+            reference: "Manav Anubhav Darshan, Page 146"
+        },
+        {
+            hindi: "संयम, इंद्रियों पर नियंत्रण नहीं, बल्कि समझ का अनुशासन है।",
+            english: "Self-control is not the suppression of senses, but the discipline of understanding.",
+            interpretation: "'Sanyam' or self-control is often misunderstood as forcefully 'niyantran' or suppressing sensory desires. This quote clarifies that true self-control is the 'anushasan' or discipline that naturally arises from 'samaj' or understanding. When one understands the limited and transient nature of sensory pleasure, the obsession with it naturally subsides without force.",
+            reference: "Manav Vyavahar Darshan, Page 92"
+        },
+        {
+            hindi: "अस्तित्व में कोई भी चीज अनावश्यक नहीं है।",
+            english: "In existence, nothing is unnecessary.",
+            interpretation: "This reinforces the idea of a purposeful and ordered reality. Every single thing, from a mosquito to a supernova, has a role to play in the grand scheme. The concept of 'anavashyak' or unnecessary is a judgment made from a limited and ignorant human perspective. In the eyes of existence, everything is needed.",
+            reference: "Manav Karma Darshan, Page 24"
+        },
+        {
+            hindi: "शिक्षा का उद्देश्य, मानव को उसके वास्तविक स्वरूप से परिचित कराना है।",
+            english: "The purpose of education is to acquaint a human with their true nature.",
+            interpretation: "The ultimate 'uddeshya' or purpose of 'shiksha' or education goes beyond external subjects. It is to facilitate a journey of self-discovery, to 'parichit karana' or acquaint the individual with their 'vastavik swaroop'—their true nature as a conscious, knowing being whose purpose is to live in resolution.",
+            reference: "Manav Abhyas Darshan, Page 186"
+        },
+        {
+            hindi: "ज्ञान की अग्नि में, कर्म के बीज भुन जाते हैं।",
+            english: "In the fire of knowledge, the seeds of karma are roasted.",
+            interpretation: "This uses a classic metaphor to explain the power of understanding. 'Karma' creates 'beej' or seeds of future consequences that keep one bound in a cycle of action and reaction. The 'agni' or fire of 'gyan'—the direct realization of truth—'roasts' these seeds, rendering them incapable of sprouting. It frees one from the bondage of past actions.",
+            reference: "Manav Anubhav Darshan, Page 130"
+        },
+        {
+            hindi: "प्रेम, न्याय का सहज परिणाम है।",
+            english: "Love is the natural result of justice.",
+            interpretation: "This defines the relationship between justice and love. 'Nyay' or justice is the foundation. When a relationship is consistently just, where there is mutual fulfillment and no exploitation, 'prem' or love arises as the 'sahaj parinam'—the natural, spontaneous, and effortless outcome. Love is the feeling of justice fulfilled.",
+            reference: "Manav Vyavahar Darshan, Page 73"
+        },
+        {
+            hindi: "प्रकृति के साथ जीना, सबसे बड़ा विज्ञान है।",
+            english: "To live with nature is the greatest science.",
+            interpretation: "Human science often focuses on analyzing and manipulating parts of nature. This quote suggests that the 'sabse bada vigyan' or greatest science is holistic—it is the knowledge and practice of living in complete harmony with the natural world. This requires a far deeper and more integrated understanding than any specialized discipline.",
+            reference: "Manav Karma Darshan, Page 47"
+        },
+        {
+            hindi: "जो अपनी कल्पनाओं का स्वामी है, वही अपने जीवन का स्वामी है।",
+            english: "One who is the master of their imagination is the master of their life.",
+            interpretation: "The human life is largely directed by our 'kalpana'—our imagination, our hopes, our fears. If we are a slave to our undisciplined imagination, our life will be chaotic. The one who becomes the 'swami' or master of this faculty, channeling it towards reality and purpose, becomes the master of their own destiny.",
+            reference: "Manav Abhyas Darshan, Page 94"
+        },
+        {
+            hindi: "अनुभव में, समय और स्थान का बोध मिट जाता है।",
+            english: "In experience, the sense of time and space dissolves.",
+            interpretation: "Our ordinary consciousness is bound by 'samay' (time) and 'sthan' (space). The quote states that in the peak 'anubhav' of reality, this framework dissolves. The perception is of a timeless, spaceless, eternal 'now'. It is an experience of the unchanging reality in which all time and space exist.",
+            reference: "Manav Anubhav Darshan, Page 100"
+        },
+        {
+            hindi: "अधिकार की मांग, कर्तव्य की उपेक्षा का सूचक है।",
+            english: "The demand for rights is an indicator of the neglect of duties.",
+            interpretation: "In a harmonious system, rights and duties are naturally balanced. When there is a loud and constant 'maang' or demand for 'adhikar' or rights, it is often a 'suchak' or an indicator that 'kartavya' or duties are being 'upeksha' or neglected somewhere in the system, causing an imbalance that leads to conflict.",
+            reference: "Manav Vyavahar Darshan, Page 94"
+        },
+        {
+            hindi: "सही श्रम, सही विश्राम को जन्म देता है।",
+            english: "Right labor gives birth to right rest.",
+            interpretation: "Rest ('vishram') is not just inactivity. True, deep rest is the outcome of 'sahi shram'—labor that is purposeful, fulfilling, and not driven by anxiety. When our work is aligned with our nature, it leads to a natural state of satisfaction and peaceful rest, free from mental agitation.",
+            reference: "Manav Karma Darshan, Page 81"
+        },
+        {
+            hindi: "सत्य को सुनने के लिए, मन का मौन आवश्यक है।",
+            english: "To listen to the truth, the silence of the mind is necessary.",
+            interpretation: "The truth ('Satya') is always available, but we cannot hear it if our minds are filled with constant noise—our own opinions, judgments, and internal chatter. 'Man ka maun'—a state of inner silence and receptivity—is the 'avashyak' or necessary prerequisite to be able to 'sunna' or perceive the subtle voice of reality.",
+            reference: "Manav Abhyas Darshan, Page 41"
+        },
+        {
+            hindi: "ब्रह्मांड में सब कुछ लयबद्ध है, केवल भ्रमित मानव ही बेसुरा है।",
+            english: "In the universe, everything is rhythmic; only the deluded human is out of tune.",
+            interpretation: "The cosmos, from the orbit of planets to the vibration of atoms, operates with 'lay' or rhythm. Everything is part of a grand symphony. The only entity that is 'besura' or out of tune is the 'bhramit manav'—the deluded human who, through ignorance, acts against this universal harmony, creating dissonance for themselves and others.",
+            reference: "Manav Anubhav Darshan, Page 33"
+        },
+        {
+            hindi: "हर शिकायत, एक अधूरी समझ का प्रतिबिंब है।",
+            english: "Every complaint is a reflection of an incomplete understanding.",
+            interpretation: "A 'shikayat' or complaint arises when we believe a situation should be different from what it is. This belief is always a 'pratibimb' or reflection of an 'adhuri samaj'—an incomplete understanding of the causes and conditions that have led to that situation. With complete understanding, complaint is replaced by acceptance and appropriate action.",
+            reference: "Manav Vyavahar Darshan, Page 116"
+        },
+        {
+            hindi: "प्रकृति का हर नियम, मानव के लिए एक शिक्षा है।",
+            english: "Every law of nature is a lesson for humanity.",
+            interpretation: "The laws ('niyam') of nature are not just physical principles. Each one—from gravity to symbiosis—is a 'shiksha' or a lesson for humanity. By observing and understanding these laws, we can learn about balance, interdependence, cause and effect, and the principles of a harmonious existence.",
+            reference: "Manav Karma Darshan, Page 35"
+        },
+        {
+            hindi: "तर्क संदेह को जन्म दे सकता है, और संदेह को मिटा भी सकता है।",
+            english: "Logic can give birth to doubt, and can also erase it.",
+            interpretation: "Logic ('tark') is a double-edged sword. When used superficially, it can create endless 'sandeh' or doubt by questioning everything. However, when used rigorously and taken to its ultimate conclusion, that same logic can 'mita' or erase doubt by revealing its own limitations and pointing towards the necessity of direct experience.",
+            reference: "Manav Abhyas Darshan, Page 39"
+        },
+        {
+            hindi: "आनंद, सह-अस्तित्व की अनुभूति है।",
+            english: "Bliss is the feeling of co-existence.",
+            interpretation: "'Anand' or bliss is the highest state of human experience. This quote defines it precisely. It is the 'anubhuti'—the direct feeling-experience—of the reality of 'Sah-astitva', the oneness and interconnectedness of all existence. It is the emotional counterpart to the ultimate intellectual realization.",
+            reference: "Manav Anubhav Darshan, Page 92"
+        },
+        {
+            hindi: "जो संबंधों में जीता है, वही वास्तव में जीता है।",
+            english: "Only one who lives in relationships, truly lives.",
+            interpretation: "A human being is not an isolated entity. Our existence is defined by our connections. An individual who lives a solitary, self-centered life, avoiding the challenges and joys of human connection, is not 'vastav mein jeeta'—not truly living. To live fully is to engage fully in just and harmonious relationships.",
+            reference: "Manav Vyavahar Darshan, Page 44"
+        },
+        {
+            hindi: "समृद्धि की भावना, अभाव की भावना को समाप्त करती है।",
+            english: "The feeling of prosperity ends the feeling of lack.",
+            interpretation: "This highlights that 'samriddhi' (prosperity) and 'abhav' (lack) are primarily 'bhavna' or feelings, not just objective states. The inner feeling of having enough is what truly 'samapt karti hai' or ends the painful and stressful feeling of scarcity, regardless of the external quantity of possessions.",
+            reference: "Manav Karma Darshan, Page 76"
+        },
+        {
+            hindi: "ज्ञान का उद्देश्य अहंकार को मिटाना है, बढ़ाना नहीं।",
+            english: "The purpose of knowledge is to erase the ego, not to increase it.",
+            interpretation: "The 'uddeshya' or true purpose of 'gyan' or knowledge is to 'mitana' or dissolve the 'ahankar'—the false sense of a separate self. If the pursuit of knowledge leads to an increase in pride and arrogance, it means the knowledge is incomplete and has been co-opted by the very ego it was meant to destroy.",
+            reference: "Manav Abhyas Darshan, Page 128"
+        },
+        {
+            hindi: "अनुभव के क्षण में, पूरा अस्तित्व 'हाँ' कहता है।",
+            english: "In the moment of experience, the entire existence says 'yes'.",
+            interpretation: "The deluded mind is in a constant state of conflict, saying 'no' to reality. In the 'kshan' or moment of true 'anubhav', all resistance ceases. There is a profound sense of alignment and acceptance, as if the individual and the 'pura astitva' or entire existence are in perfect accord, in a universal 'haan' or 'yes'.",
+            reference: "Manav Anubhav Darshan, Page 108"
+        },
+        {
+            hindi: "न्याय, दो या अधिक मनुष्यों के बीच की सही दूरी है।",
+            english: "Justice is the correct distance between two or more humans.",
+            interpretation: "This offers a beautiful spatial metaphor for 'nyay' or justice. It is about finding the 'sahi doori' or correct distance in a relationship—not so close as to suffocate and control, and not so distant as to be neglectful. This correct distance, based on mutual respect and understanding of roles, allows both individuals to thrive.",
+            reference: "Manav Vyavahar Darshan, Page 67"
+        },
+        {
+            hindi: "कला, व्यवस्था और सौंदर्य की अभिव्यक्ति है।",
+            english: "Art is the expression of order and beauty.",
+            interpretation: "True 'kala' or art is more than self-expression. It is the 'abhivyakti' or manifestation of 'vyavastha' (order) and 'saundarya' (beauty). The artist perceives the inherent harmony in existence and translates it into a form—music, painting, poetry—that allows others to glimpse that same underlying order.",
+            reference: "Manav Karma Darshan, Page 147"
+        },
+        {
+            hindi: "सत्य किसी व्यक्ति का नहीं, अस्तित्व का गुण है।",
+            english: "Truth is not a quality of a person, but of existence.",
+            interpretation: "No person can be 'the truth'. 'Satya' or truth is not a personal attribute. It is the 'gun' or the very quality/nature of 'astitva' or existence itself. A person can align with the truth, reflect the truth, and live in the truth, but they do not own it. This fosters humility.",
+            reference: "Manav Abhyas Darshan, Page 16"
+        },
+        {
+            hindi: "समाधान के बिना, शांति एक अस्थायी समझौता है।",
+            english: "Without resolution, peace is a temporary compromise.",
+            interpretation: "Often, what we call 'shanti' or peace is just a 'samjhauta' or a compromise to avoid conflict, with the underlying issues remaining unresolved. This is always 'asthai' or temporary. True, lasting peace is only possible as a result of 'samadhan'—the complete resolution of the root causes of the conflict.",
+            reference: "Manav Anubhav Darshan, Page 82"
+        },
+        {
+            hindi: "संवेदनशीलता, समझ के बिना, दुख का कारण है।",
+            english: "Sensitivity, without understanding, is a cause of suffering.",
+            interpretation: "Being sensitive ('sanvedansheelta') can be a great quality. However, if it is not guided by 'samaj' or understanding, it can make one overly vulnerable to the words and actions of others, leading to constant 'dukh' or suffering. Understanding acts as a stable anchor for sensitivity, allowing for empathy without being overwhelmed.",
+            reference: "Manav Vyavahar Darshan, Page 93"
+        },
+        {
+            hindi: "प्रकृति में अपव्यय नहीं है, केवल रूपांतरण है।",
+            english: "In nature, there is no waste, only transformation.",
+            interpretation: "The concept of 'apavyay' or waste is a human invention. In nature's economy, everything is recycled. What is an end-product for one process is the raw material for another. There is only a continuous 'rupantaran' or transformation of energy and matter. Adopting this principle is the key to sustainable living.",
+            reference: "Manav Karma Darshan, Page 36"
+        },
+        {
+            hindi: "विचार की स्वतंत्रता, भ्रम से मुक्ति के बाद ही संभव है।",
+            english: "Freedom of thought is possible only after freedom from delusion.",
+            interpretation: "We may think we have freedom of thought, but mostly our thoughts run in predetermined grooves set by our conditioning and 'bhram' or delusion. True 'vichar ki swatantrata' is the state of a mind that has been 'mukt' or liberated from these compulsions, and can now think clearly, creatively, and in alignment with reality.",
+            reference: "Manav Abhyas Darshan, Page 121"
+        },
+        {
+            hindi: "अनुभव, शब्दों की सीमा के पार का सत्य है।",
+            english: "Experience is the truth beyond the boundary of words.",
+            interpretation: "Words ('shabd') can create a 'seema' or a boundary, a conceptual framework. But the reality they point to, the truth that is realized in 'anubhav', lies 'paar' or beyond this boundary. To know reality, one must eventually take the leap from the conceptual map to the experiential territory.",
+            reference: "Manav Anubhav Darshan, Page 21"
+        }
+    ];
+
+    const natureGradients = [
+        'linear-gradient(to top, #4facfe 0%, #00f2fe 100%)',      // Clear Sky
+        'linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)',   // Sunrise
+        'linear-gradient(to top, #0ba360 0%, #3cba92 100%)',      // Forest Canopy
+        'linear-gradient(to right, #d4145a 0%, #fbb03b 100%)',   // Fiery Sunset
+        'linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%)',      // Lavender Field
+        'linear-gradient(to top, #1e3c72 0%, #2a5298 100%)',      // Deep Ocean
+        'linear-gradient(to top, #d299c2 0%, #fef9d7 100%)',      // Dawn
+        'linear-gradient(to right, #00c9ff 0%, #92fe9d 100%)',   // Tropical Lagoon
+        'linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)',      // Misty Mountains
+    ];
+
+    // --- State Variables ---
+    let currentBg = '';
+    let isFlipping = false;
+    let usedIndices = [];
+
+    // --- DOM Element References ---
+    const mainContainer = document.getElementById('main-container');
+    const quoteCardContent = document.getElementById('quote-card-content');
+    const newQuoteBtn = document.getElementById('new-quote-btn');
+    const quoteHindiEl = document.getElementById('quote-hindi');
+    const quoteEnglishEl = document.getElementById('quote-english');
+    const quoteInterpretationEl = document.getElementById('quote-interpretation');
+    const quoteReferenceEl = document.getElementById('quote-reference');
+
+    // --- Functions ---
+    const updateQuoteContent = (quote) => {
+        quoteHindiEl.textContent = quote.hindi;
+        quoteEnglishEl.textContent = `— ${quote.english}`;
+        quoteInterpretationEl.textContent = quote.interpretation;
+        quoteReferenceEl.textContent = quote.reference;
+    };
+    
+    const getRandomQuote = () => {
+        if (isFlipping) return;
+
+        isFlipping = true;
+        newQuoteBtn.disabled = true;
+        quoteCardContent.classList.add('flipping');
+
+        // --- Select new background ---
+        let newBg = currentBg;
+        while (newBg === currentBg) {
+            newBg = natureGradients[Math.floor(Math.random() * natureGradients.length)];
+        }
+        currentBg = newBg;
+        mainContainer.style.backgroundImage = currentBg;
+
+        // --- Select new quote ---
+        let availableIndices = quotes.map((_, i) => i).filter(i => !usedIndices.includes(i));
+        if (availableIndices.length === 0) {
+            usedIndices = [];
+            availableIndices = quotes.map((_, i) => i);
+        }
+        const randomIndex = availableIndices[Math.floor(Math.random() * availableIndices.length)];
+        usedIndices.push(randomIndex);
+        const newQuote = quotes[randomIndex];
+        
+        // --- Animate and Update ---
+        setTimeout(() => {
+            updateQuoteContent(newQuote);
+            quoteCardContent.classList.remove('flipping');
+            isFlipping = false;
+            newQuoteBtn.disabled = false;
+        }, 300);
+    };
+
+    // --- Initial Load ---
+    document.addEventListener('DOMContentLoaded', () => {
+        // Initial Background
+        currentBg = natureGradients[Math.floor(Math.random() * natureGradients.length)];
+        mainContainer.style.backgroundImage = currentBg;
+
+        // Initial Quote
+        const firstIndex = Math.floor(Math.random() * quotes.length);
+        usedIndices.push(firstIndex);
+        updateQuoteContent(quotes[firstIndex]);
+
+        // --- Event Listener ---
+        newQuoteBtn.addEventListener('click', getRandomQuote);
+    });
+
+</script>
+</body>
+</html>

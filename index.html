@@ -13,9 +13,6 @@
         body {
             font-family: 'Inter', sans-serif;
         }
-        .text-shadow {
-            text-shadow: 0 2px 4px rgba(0,0,0,0.4);
-        }
         /* Styles for the flipping animation */
         #quote-card-content {
             transition: opacity 300ms ease-in-out, transform 300ms ease-in-out;
@@ -27,14 +24,14 @@
     </style>
 </head>
 <body>
-    <div id="main-container" class="flex flex-col items-center justify-center min-h-screen p-4 transition-all duration-1000">
+    <div id="main-container" class="bg-white flex flex-col items-center justify-center min-h-screen p-4">
         <div class="w-full max-w-2xl mx-auto">
             <header class="text-center mb-8">
-                <h1 class="text-3xl md:text-4xl font-bold text-white text-shadow">Wisdom from Madhyasth Darshan</h1>
-                <p class="text-gray-200 mt-2 text-shadow">Insights on Coexistence and Human Consciousness</p>
+                <h1 class="text-3xl md:text-4xl font-bold text-gray-800">Wisdom from Madhyasth Darshan</h1>
+                <p class="text-gray-600 mt-2">Insights on Coexistence and Human Consciousness</p>
             </header>
             
-            <div class="bg-white/70 dark:bg-gray-800/70 backdrop-blur-sm rounded-xl shadow-lg p-6 md:p-8 flex flex-col">
+            <div class="bg-gray-50 rounded-xl shadow-lg p-6 md:p-8 flex flex-col">
                 <main class="flex-grow min-h-[360px] md:min-h-[340px] flex items-center justify-center">
                     <div id="quote-card-content">
                         <div class="flex flex-col h-full">
@@ -68,7 +65,7 @@
             </div>
 
             <footer class="text-center mt-12">
-                <div class="text-sm text-gray-200 max-w-md mx-auto text-shadow">
+                <div class="text-sm text-gray-500 max-w-md mx-auto">
                     <p>Quotes from Books by Shri A. Nagraj,</p>
                     <p class="italic mt-1">Translations and interpretations may not be completely accurate and are indicative of the actual meaning.</p>
                 </div>
@@ -1695,20 +1692,7 @@
         }
     ];
 
-    const natureGradients = [
-        'linear-gradient(to top, #4facfe 0%, #00f2fe 100%)',      // Clear Sky
-        'linear-gradient(to right, #ffecd2 0%, #fcb69f 100%)',   // Sunrise
-        'linear-gradient(to top, #0ba360 0%, #3cba92 100%)',      // Forest Canopy
-        'linear-gradient(to right, #d4145a 0%, #fbb03b 100%)',   // Fiery Sunset
-        'linear-gradient(to top, #a18cd1 0%, #fbc2eb 100%)',      // Lavender Field
-        'linear-gradient(to top, #1e3c72 0%, #2a5298 100%)',      // Deep Ocean
-        'linear-gradient(to top, #d299c2 0%, #fef9d7 100%)',      // Dawn
-        'linear-gradient(to right, #00c9ff 0%, #92fe9d 100%)',   // Tropical Lagoon
-        'linear-gradient(to top, #6a85b6 0%, #bac8e0 100%)',      // Misty Mountains
-    ];
-
     // --- State Variables ---
-    let currentBg = '';
     let isFlipping = false;
     let usedIndices = [];
 
@@ -1736,14 +1720,6 @@
         newQuoteBtn.disabled = true;
         quoteCardContent.classList.add('flipping');
 
-        // --- Select new background ---
-        let newBg = currentBg;
-        while (newBg === currentBg) {
-            newBg = natureGradients[Math.floor(Math.random() * natureGradients.length)];
-        }
-        currentBg = newBg;
-        mainContainer.style.backgroundImage = currentBg;
-
         // --- Select new quote ---
         let availableIndices = quotes.map((_, i) => i).filter(i => !usedIndices.includes(i));
         if (availableIndices.length === 0) {
@@ -1765,10 +1741,6 @@
 
     // --- Initial Load ---
     document.addEventListener('DOMContentLoaded', () => {
-        // Initial Background
-        currentBg = natureGradients[Math.floor(Math.random() * natureGradients.length)];
-        mainContainer.style.backgroundImage = currentBg;
-
         // Initial Quote
         const firstIndex = Math.floor(Math.random() * quotes.length);
         usedIndices.push(firstIndex);

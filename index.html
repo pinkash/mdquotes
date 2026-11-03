@@ -156,17 +156,6 @@
                     </button>
                 </div>
 
-                <!-- Instant Search / Filter Bar -->
-                <div class="mb-5">
-                    <div class="relative">
-                        <input type="text" id="list-search-input" placeholder="Search by Hindi word, English keyword, chapter, page..." class="w-full text-sm pl-10 pr-4 py-2.5 rounded-xl border border-slate-200 bg-slate-50 focus:bg-white focus:outline-none focus:ring-2 focus:ring-indigo-500/20 focus:border-indigo-500 transition-all">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 text-slate-400 absolute left-3.5 top-3" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                            <circle cx="11" cy="11" r="8"/>
-                            <path d="m21 21-4.3-4.3"/>
-                        </svg>
-                    </div>
-                </div>
-
                 <!-- Scrollable Container -->
                 <div id="quotes-list" class="space-y-4 max-h-[68vh] overflow-y-auto pr-1.5 custom-scroll">
                     <!-- Populated dynamically via JavaScript -->
@@ -5779,7 +5768,6 @@ const quotes = [
     
     // List elements
     const quotesListEl = document.getElementById('quotes-list');
-    const listSearchInput = document.getElementById('list-search-input');
 
     // Update single card view
     const renderCard = (index) => {
@@ -5869,22 +5857,6 @@ const quotes = [
             quotesListEl.appendChild(card);
         });
     };
-
-    // List Search / Filter handler
-    listSearchInput.addEventListener('input', (e) => {
-        const query = e.target.value.toLowerCase().trim();
-        if (!query) {
-            renderListView(quotes);
-            return;
-        }
-        const filtered = quotes.filter(q => 
-            q.hindi.toLowerCase().includes(query) ||
-            q.english.toLowerCase().includes(query) ||
-            q.interpretation.toLowerCase().includes(query) ||
-            q.reference.toLowerCase().includes(query)
-        );
-        renderListView(filtered);
-    });
 
     // Keyboard navigation (Left/Right arrows for Prev/Next)
     document.addEventListener('keydown', (e) => {
